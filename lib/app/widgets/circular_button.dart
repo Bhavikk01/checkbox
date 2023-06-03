@@ -8,11 +8,14 @@ class CircularButton extends StatelessWidget {
   final Radius? topRight;
   final Radius? bottomLeft;
   final Radius? bottomRight;
+  final Function onPressed;
+
   const CircularButton(
       {this.topLeft,
       this.topRight,
       this.bottomLeft,
       this.bottomRight,
+      required this.onPressed,
       required this.text,
       required this.height,
       required this.width,
@@ -22,11 +25,11 @@ class CircularButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () => onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.amber,
         elevation: 0.0,
-        padding: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: topLeft ?? Radius.zero,
@@ -38,12 +41,12 @@ class CircularButton extends StatelessWidget {
       ),
       child: Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(horizontal: 30),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
         width: width,
         height: height,
         child: Text(
           text,
-          style: TextStyle(
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 18,
             fontWeight: FontWeight.bold,

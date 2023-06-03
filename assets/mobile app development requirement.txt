@@ -1,0 +1,162 @@
+➤ What is your business model?
+(B2C)
+Yes
+(B2B)
+Yes
+(C2C)
+No
+(D2C)
+No
+(B2G)
+Yes
+(C2B)
+No
+(B2BB2C)
+Yes
+(Other)
+➤ Describe your goals for building the mobile app. (So that the Provider can suggest appropriate solutions).
+(Generate revenue through in-app purchases, subscription models, or advertising.)
+Yes
+(Generate revenue through in-app purchases, subscription models, or advertising.)(Comment)
+For user who pays small acquisition cost to collect affiliate commissions.
+(Engage customers effectively through push notifications and personalized content to increase loyalty and retention.)
+Yes
+(Engage customers effectively through push notifications and personalized content to increase loyalty and retention.)(Comment)
+AI for user to understand best matches 
+(Improve brand awareness through a well-designed app that provides a unique user experience and leaves a lasting impression on users.)
+Yes
+(Improve brand awareness through a well-designed app that provides a unique user experience and leaves a lasting impression on users.)(Comment)
+To stand out from others yet highlight partner brands
+(Streamline business processes, such as inventory management, order tracking, and employee communication to increase efficiency and productivity.)
+Yes
+(Streamline business processes, such as inventory management, order tracking, and employee communication to increase efficiency and productivity.)(Comment)
+Split income or commissions between personal accounts & to other types of acquisitions 
+(Make a social impact by building apps that help people access healthcare or education, or provide support to underserved communities.)
+Yes
+(Make a social impact by building apps that help people access healthcare or education, or provide support to underserved communities.)(Comment)
+Education & Entrepreneur supports 
+(Pursue personal projects such as learning new skills, creating tools to solve problems, or pursuing hobbies.)
+Yes
+(Pursue personal projects such as learning new skills, creating tools to solve problems, or pursuing hobbies.)(Comment)
+AI assistance to match choices to skillsets
+(Gain a competitive advantage in a particular industry by building a mobile app, such as a shopping app for retail businesses to keep up with competitors.)
+Yes
+(Gain a competitive advantage in a particular industry by building a mobile app, such as a shopping app for retail businesses to keep up with competitors.)(Comment)
+Split payments in real time with income as key feature
+(Any other(1))
+No
+(Any other(1))(Comment)
+(Any other(2))
+No
+(Any other(2))(Comment)
+➤ What types of mobile app development you are looking for?
+(Native app development: App built for one platform using platform-specific tools and languages.)
+No
+(Native app development: App built for one platform using platform-specific tools and languages.)(Comment)
+(Hybrid app development: App built using web technologies packaged as native apps.)
+Yes
+(Hybrid app development: App built using web technologies packaged as native apps.)(Comment)
+Partnerships with multiple payment platforms 
+(Web app development: App accessed through a mobile web browser using standard web technologies.)
+Yes
+(Web app development: App accessed through a mobile web browser using standard web technologies.)(Comment)
+Dashboard feature as option
+(Progressive web app (PWA) development: Web app designed to look and feel like a native app, with features like offline access and push notifications.)
+Yes
+(Progressive web app (PWA) development: Web app designed to look and feel like a native app, with features like offline access and push notifications.)(Comment)
+Tailored by AI to user
+(Cross-platform app development: App built to run on multiple platforms using a single codebase.)
+Yes
+(Cross-platform app development: App built to run on multiple platforms using a single codebase.)(Comment)
+Version 3 is not an upgrade.  All are stand alone built from 1.0.  3.0 includes agreed contracts investment platforms 
+(Any Other, please specify here)
+Yes
+(Any Other, please specify here)(Comment)
+4.0 is stakeholder dashboard for performances of what they have invested in & general performances of fund offerings they are members of.
+➤What is the purpose/what problem does your mobile app is solving? Please descibe
+Access to income in hard to reach geographic areas to performance metrics of investors & stakeholders built from same framework 1.0-4.0, each of which operates independently.
+How would you describe the target audience?
+Beginning entrepreneurs to accredited investors with limited tech knowledge.
+➤What are the different features you need in this mobile app? Please write as clearly as possible which will help you get apt quotations
+Splitting income in real time between personal accounts & investments as income from earnings arrives.
+➤Apart from the above features if you have any other features/user actions/anything that needs to be added to the mobile app please describe them here.
+➤ Please choose the modules or components that are needed for mobile app development you need
+(User Interface (UI): This includes all the visual elements that users interact with, such as buttons, text boxes, and menus.)
+Yes
+(User Interface (UI): This includes all the visual elements that users interact with, such as buttons, text boxes, and menus.)(Comment)
+(User Experience (UX): This focuses on creating a positive and intuitive experience for users, which can include factors such as ease of use, accessibility, and responsiveness.)
+Yes
+(User Experience (UX): This focuses on creating a positive and intuitive experience for users, which can include factors such as ease of use, accessibility, and responsiveness.)(Comment)
+(Backend Development: This includes the server-side code that handles data storage, retrieval, and processing, as well as the APIs that allow the app to communicate with external services.)
+Yes
+(Backend Development: This includes the server-side code that handles data storage, retrieval, and processing, as well as the APIs that allow the app to communicate with external services.)(Comment)
+(Security: This includes implementing measures to protect user data and prevent unauthorized access, such as encryption, authentication, and data validation.)
+Yes
+(Security: This includes implementing measures to protect user data and prevent unauthorized access, such as encryption, authentication, and data validation.)(Comment)
+(Analytics: This includes tools for tracking user behavior and app performance, such as user engagement, crash reports, and app usage metrics.)
+Yes
+(Analytics: This includes tools for tracking user behavior and app performance, such as user engagement, crash reports, and app usage metrics.)(Comment)
+(Push Notifications: This allows the app to send notifications to users even when the app is not open, keeping them engaged and informed.)
+Yes
+(Push Notifications: This allows the app to send notifications to users even when the app is not open, keeping them engaged and informed.)(Comment)
+(Payment Processing: This includes integration with payment gateways to enable in-app purchases and other payment transactions.)
+Yes
+(Payment Processing: This includes integration with payment gateways to enable in-app purchases and other payment transactions.)(Comment)
+(Social Media Integration: This allows users to interact with social media platforms within the app, such as sharing content or logging in with their social media accounts.)
+Yes
+(Social Media Integration: This allows users to interact with social media platforms within the app, such as sharing content or logging in with their social media accounts.)(Comment)
+Perhaps in 2.0 private label version
+(Location-Based Services: This includes features that utilize the device's GPS capabilities, such as maps, location tracking, and geofencing.)
+Yes
+(Location-Based Services: This includes features that utilize the device's GPS capabilities, such as maps, location tracking, and geofencing.)(Comment)
+(Offline Functionality: This allows the app to continue functioning even when the device is not connected to the internet, such as offline storage and caching.)
+Yes
+(Offline Functionality: This allows the app to continue functioning even when the device is not connected to the internet, such as offline storage and caching.)(Comment)
+If appropriate 
+Please share the app's design requirements, including color scheme, layout, and overall aesthetic. This will help you create a visually appealing and user-friendly app.
+Trust factor color is blue.  Progress & income is green.  Points for attention or caution in yellow.
+➤Content: Do you provide content for the app development?
+Yes
+➤ Content: Do you provide content for the app development?
+(Comment)
+Updates on projects progress according to user version.
+➤Are there any specific technologies you would like to utilize?
+Banking & investment platforms integration
+➤ What type of device compatibility does your mobile app need?
+(Operating Systems: Mobile apps can be developed for different operating systems, such as Android or iOS.)
+Yes
+(Device Types: Mobile apps should be developed to work on different device types, including smartphones, tablets, and wearables.)
+Yes
+(Screen Sizes and Resolutions: Mobile apps should be designed to be responsive and adaptable to different screen sizes and resolutions.)
+Yes
+(Hardware and Software Features: Mobile apps should work with the hardware and software features of the device, such as cameras, GPS, or biometric sensors.)
+Yes
+(Network Connectivity: Mobile apps should work properly on different network types and conditions, including Wi-Fi, cellular data, and Bluetooth.)
+Yes
+(Accessibility: Mobile apps should be designed to be accessible to people with different abilities, such as those with visual or hearing impairments.)
+Yes
+(Localization: Mobile apps should be localized to different languages and cultural contexts for global use.)
+Yes
+(Other)
+To discuss what is incomplete at this date or regarding other points not described 
+➤ Does your business need support to do the following things in the future?
+(Bug fixes)
+Yes
+(Performance optimization)
+Yes
+(Security updates)
+Yes
+(Compatibility updates)
+Yes
+(Feature updates)
+Yes
+(Content updates)
+Yes
+(User support)
+Yes
+(Other)
+Any Additional Details
+As mentioned above
+➤ Please click on the check box below and hit submit.
+(I have reviewed and confirmed that this data is correct.)
+Yes

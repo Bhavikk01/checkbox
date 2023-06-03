@@ -1,7 +1,9 @@
-import 'package:checkbox/screens/screen1.dart';
-import 'package:checkbox/screens/screen2.dart';
-import 'package:checkbox/screens/screen3.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+
+import 'app/routes/route_paths.dart';
+import 'app/routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,16 +12,20 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      home: Screen3(),
+    return ScreenUtilInit(
+      builder: (context, child) {
+        return GetMaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          debugShowCheckedModeBanner: false,
+          getPages: RouteClass.routes,
+          initialRoute: RoutePaths.splashScreen,
+        );
+      }
     );
   }
 }

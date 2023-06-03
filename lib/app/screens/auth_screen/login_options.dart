@@ -1,11 +1,13 @@
-import 'package:checkbox/widgets/circular_button.dart';
+import 'package:checkbox1/app/routes/route_paths.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-class Screen2 extends StatelessWidget {
-  const Screen2({super.key});
+import '../../widgets/circular_button.dart';
+
+class LoginOption extends StatelessWidget {
+  const LoginOption({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,27 +17,34 @@ class Screen2 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Image(
-            image: AssetImage("assets/screen2.png"),
+            image: AssetImage("assets/signup.jpeg"),
             width: double.infinity,
             fit: BoxFit.fitWidth,
           ),
           SizedBox(
-            height: 30,
+            height: 30.h,
           ),
-          const CircularButton(
-            text: "LOGIN",
-            height: 60,
-            width: 200,
-            bottomLeft: Radius.circular(40.0),
-            bottomRight: Radius.circular(40.0),
-            topLeft: Radius.circular(40.0),
-            topRight: Radius.circular(40.0),
+          GestureDetector(
+            child: CircularButton(
+              text: "LOGIN",
+              onPressed: () {
+                Get.toNamed(RoutePaths.loginScreen);
+              },
+              height: 60,
+              width: 200,
+              bottomLeft: Radius.circular(40.r),
+              bottomRight: Radius.circular(40.r),
+              topLeft: Radius.circular(40.r),
+              topRight: Radius.circular(40.r),
+            ),
           ),
           SizedBox(
-            height: 16,
+            height: 16.h,
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Get.toNamed(RoutePaths.loginScreen);
+            },
             child: const Text(
               "SIGN UP",
               style: TextStyle(
@@ -46,14 +55,14 @@ class Screen2 extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 30,
+            height: 30.h,
           ),
           RichText(
             text: TextSpan(
                 text: "Already have an account? ",
-                style: const TextStyle(
+                style: TextStyle(
                   color: Colors.black,
-                  fontSize: 18,
+                  fontSize: 18.sp,
                   fontWeight: FontWeight.bold,
                 ),
                 children: [
