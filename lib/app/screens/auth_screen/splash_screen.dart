@@ -24,12 +24,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      //padding: EdgeInsets.symmetric(horizontal: 12.0),
-      height: double.infinity,
-      width: double.infinity,
+      width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/splash.jpeg"),
+          image: AssetImage("assets/splash.png"),
           fit: BoxFit.cover,
         ),
       ),

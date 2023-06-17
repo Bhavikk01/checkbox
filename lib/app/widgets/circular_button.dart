@@ -1,9 +1,11 @@
+import 'package:checkbox1/app/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CircularButton extends StatelessWidget {
   final String text;
   final double width;
-  final double height;
+  // final double height;
   final Radius? topLeft;
   final Radius? topRight;
   final Radius? bottomLeft;
@@ -17,7 +19,7 @@ class CircularButton extends StatelessWidget {
       this.bottomRight,
       required this.onPressed,
       required this.text,
-      required this.height,
+      // required this.height,
       required this.width,
       Key? key})
       : super(key: key);
@@ -25,11 +27,13 @@ class CircularButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () => onPressed,
+      onPressed: () {
+        onPressed();
+      },
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.amber,
+        backgroundColor: Colors.amberAccent,
         elevation: 0.0,
-        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+        padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 6.w),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             topLeft: topLeft ?? Radius.zero,
@@ -41,16 +45,14 @@ class CircularButton extends StatelessWidget {
       ),
       child: Container(
         alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(horizontal: 30),
         width: width,
-        height: height,
-        child: Text(
-          text,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+        padding: const EdgeInsets.symmetric(horizontal: 30),
+        child: CustomTextField(
+          text: text,
+          textColor: Colors.black,
+          font: '',
+          fontSize: 16.sp,
+          fontWeight: FontWeight.bold,
         ),
       ),
     );

@@ -1,10 +1,14 @@
+import 'dart:developer';
+
 import 'package:checkbox1/app/routes/route_paths.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/circular_button.dart';
+import '../../widgets/custom_text_field.dart';
 
 class LoginOption extends StatelessWidget {
   const LoginOption({super.key});
@@ -13,69 +17,84 @@ class LoginOption extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white.withOpacity(0.95),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const Image(
-            image: AssetImage("assets/signup.jpeg"),
-            width: double.infinity,
-            fit: BoxFit.fitWidth,
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          GestureDetector(
-            child: CircularButton(
-              text: "LOGIN",
-              onPressed: () {
-                Get.toNamed(RoutePaths.loginScreen);
-              },
-              height: 60,
-              width: 200,
-              bottomLeft: Radius.circular(40.r),
-              bottomRight: Radius.circular(40.r),
-              topLeft: Radius.circular(40.r),
-              topRight: Radius.circular(40.r),
-            ),
-          ),
-          SizedBox(
-            height: 16.h,
-          ),
-          InkWell(
-            onTap: () {
-              Get.toNamed(RoutePaths.loginScreen);
-            },
-            child: const Text(
-              "SIGN UP",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 30.h,
-          ),
-          RichText(
-            text: TextSpan(
-                text: "Already have an account? ",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18.sp,
-                  fontWeight: FontWeight.bold,
+      body: Container(
+        margin: EdgeInsets.only(top: 150.h, bottom: 40.h),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              children: [
+                const Image(
+                  image: AssetImage("assets/signup.png"),
+                  width: double.infinity,
+                  fit: BoxFit.fitWidth,
                 ),
-                children: [
-                  TextSpan(
-                      text: "Login",
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () => print('pressed1'),
-                      style: const TextStyle(
-                        color: Colors.amber,
-                      )),
-                ]),
-          ),
-        ],
+                Container(
+                  margin: EdgeInsets.only(right: 60.w, left: 60.w),
+                  child: CustomTextField(
+                    text: 'CASHBOX brings insight, security, and protection to your money',
+                    font: '',
+                    fontSize: 18.sp,
+                    textAlign: TextAlign.center,
+                    fontWeight: FontWeight.w600,
+                    textColor: const Color(0xff151729),
+                  ),
+                ),
+              ],
+            ),
+            Column(
+              children: [
+                CircularButton(
+                  text: "LOGIN",
+                  onPressed: () => Get.toNamed(RoutePaths.loginScreen),
+                  width: 220.w,
+                  bottomLeft: Radius.circular(40.r),
+                  bottomRight: Radius.circular(40.r),
+                  topLeft: Radius.circular(40.r),
+                  topRight: Radius.circular(40.r),
+                ),
+                SizedBox(
+                  height: 16.h,
+                ),
+                InkWell(
+                  onTap: () {
+                    Get.toNamed(RoutePaths.loginScreen);
+                  },
+                  child: CustomTextField(
+                    text: "SIGN UP",
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.sp,
+                    font: '',
+                  ),
+                ),
+                SizedBox(
+                  height: 30.h,
+                ),
+                RichText(
+                  text: TextSpan(
+                    text: "Already have an account? ",
+                    style: GoogleFonts.roboto(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
+                    children: [
+                      TextSpan(
+                        text: "Login",
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => log('pressed1'),
+                        style: GoogleFonts.roboto(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.amber,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,0 +1,300 @@
+import 'package:checkbox1/app/widgets/circular_button.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_ticket/flutter_ticket.dart';
+
+import '../../widgets/custom_text_field.dart';
+
+class PaymentFailedPage extends StatelessWidget {
+  const PaymentFailedPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        title: CustomTextField(
+          text: 'Payment Status',
+          fontWeight: FontWeight.w500,
+          fontSize: 18.sp,
+          font: '',
+          textColor: Colors.white,
+        ),
+        centerTitle: true,
+        actions: [
+          Icon(
+            Icons.close,
+            color: Colors.white,
+            size: 25.h,
+          ),
+          SizedBox(
+            width: 20.w,
+          )
+        ],
+      ),
+      body: Container(
+        margin: EdgeInsets.only(top: 30.h),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: 30.h, right: 40.w, left: 40.w),
+                  child: Ticket(
+                    dashedBottom: true,
+                    innerRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20.r),
+                      bottomRight: Radius.circular(20.r),
+                    ),
+                    outerRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.r),
+                      topRight: Radius.circular(20.r),
+                    ),
+                    child: Container(
+                      color: Colors.white,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                        vertical: 20.h,
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(height: 30.h),
+                          CustomTextField(
+                            text: 'Payment Failed',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18.sp,
+                            font: '',
+                            textColor: Colors.black,
+                          ),
+                          SizedBox(height: 5.h),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8.w),
+                            child: CustomTextField(
+                              text:
+                                  'You do not have enough funds in your balance',
+                              fontWeight: FontWeight.w500,
+                              textAlign: TextAlign.center,
+                              fontSize: 12.sp,
+                              font: '',
+                              textColor: Colors.black54,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: 30.h,
+                              bottom: 10.h,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              vertical: 10.h,
+                              horizontal: 10.h,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer,
+                              borderRadius: BorderRadius.circular(15.r),
+                            ),
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  radius: 20.r,
+                                  backgroundColor: Colors.white,
+                                  child: Icon(
+                                    Icons.person_2_outlined,
+                                    color: Colors.black,
+                                    size: 20.h,
+                                  ),
+                                ),
+                                SizedBox(width: 10.w),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      constraints: BoxConstraints(
+                                          minWidth: 10.w, maxWidth: 140.w),
+                                      child: CustomTextField(
+                                        text: 'User Name',
+                                        fontWeight: FontWeight.w700,
+                                        lines: 1,
+                                        fontSize: 13.sp,
+                                        font: '',
+                                        textColor: Colors.black,
+                                      ),
+                                    ),
+                                    Container(
+                                      constraints: BoxConstraints(
+                                          minWidth: 10.w, maxWidth: 140.w),
+                                      child: CustomTextField(
+                                        text: 'ID: 5684644868787',
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 12.sp,
+                                        lines: 1,
+                                        font: '',
+                                        textColor: Colors.black54,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 40.w),
+                  child: Ticket(
+                    dashedBottom: true,
+                    outerRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20.r),
+                      bottomRight: Radius.circular(20.r),
+                    ),
+                    innerRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.r),
+                      topRight: Radius.circular(20.r),
+                    ),
+                    child: Container(
+                      color: Colors.white,
+                      child: Column(
+                        children: [
+                          Divider(
+                            color: Colors.black38,
+                            height: 2.h,
+                            indent: 0,
+                          ),
+                          Container(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 40.w,
+                              vertical: 20.h,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomTextField(
+                                      text: 'Date',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12.sp,
+                                      lines: 1,
+                                      font: '',
+                                      textColor: Colors.black38,
+                                    ),
+                                    Container(
+                                      constraints: BoxConstraints(
+                                          minWidth: 10.w, maxWidth: 100.w),
+                                      child: CustomTextField(
+                                        text: '04 Aug 2022',
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 13.sp,
+                                        lines: 1,
+                                        font: '',
+                                        textColor: Colors.black,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomTextField(
+                                      text: 'Time',
+                                      fontWeight: FontWeight.w600,
+                                      fontSize: 12.sp,
+                                      lines: 1,
+                                      font: '',
+                                      textColor: Colors.black38,
+                                    ),
+                                    CustomTextField(
+                                      text: '11:04:50',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 13.sp,
+                                      lines: 1,
+                                      font: '',
+                                      textColor: Colors.black,
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          Container(
+                            color: Theme.of(context).colorScheme.secondary,
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 40.w,
+                              vertical: 20.h,
+                            ),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  constraints: BoxConstraints(
+                                      minWidth: 10.w, maxWidth: 100.w),
+                                  child: CustomTextField(
+                                    text: 'Amount',
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14.sp,
+                                    lines: 1,
+                                    font: '',
+                                    textColor: Colors.white,
+                                  ),
+                                ),
+                                Container(
+                                  constraints: BoxConstraints(
+                                      minWidth: 10.w, maxWidth: 120.w),
+                                  child: CustomTextField(
+                                    text: 'USD: 75.00',
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 15.sp,
+                                    lines: 1,
+                                    font: '',
+                                    textColor: Colors.white,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 40.h),
+                CircularButton(
+                  width: 223.w,
+                  text: 'TRY AGAIN',
+                  onPressed: () {},
+                  bottomLeft: Radius.circular(40.r),
+                  bottomRight: Radius.circular(40.r),
+                  topLeft: Radius.circular(40.r),
+                  topRight: Radius.circular(40.r),
+                )
+              ],
+            ),
+            Positioned(
+              top: 0,
+              child: Container(
+                height: 60.h,
+                width: 60.w,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.redAccent,
+                ),
+                child: Icon(
+                  Icons.cancel,
+                  color: Colors.white,
+                  size: 34.h,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
