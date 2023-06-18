@@ -1,13 +1,13 @@
 import 'package:checkbox1/app/screens/home_page/dashboard_page.dart';
+import 'package:checkbox1/app/screens/home_page/notification_screens.dart';
 import 'package:checkbox1/app/screens/home_page/profile_page.dart';
+import 'package:checkbox1/app/screens/payment_status/payment_success_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../payment_status/payment_failed_page.dart';
+import '../../payment_status/user_option_page.dart';
 import '../chatting_page.dart';
 import '../payment_history_page.dart';
-import '../payment_notifi_page.dart';
-import '../search_user_page.dart';
 
 class HomePageController extends GetxController {
 
@@ -16,7 +16,7 @@ class HomePageController extends GetxController {
     const TransactionHistoryPage(),
     const ChattingPage(),
     const DashboardPage(),
-    const PaymentNotifierPage(),
+    const NotificationScreen(),
     const ProfilePage(),
   ];
 

@@ -59,7 +59,7 @@ class LoginOption extends GetView<AuthController> {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.toNamed(RoutePaths.signUpScreen);
+                    Get.toNamed(RoutePaths.signUpOptionScreen);
                   },
                   child: CustomTextField(
                     text: "SIGN UP",

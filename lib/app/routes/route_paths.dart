@@ -5,8 +5,11 @@ class RoutePaths {
 
   /// Auth Screens
   static String loginScreen = '/loginScreen';
-  static String signUpScreen = '/signUpScreen';
+  static String signUpOptionScreen = '/signUpOptionScreen';
+  static String signUpIndividual = '/signUpIndividual';
+  static String signUpBusiness = '/signUpBusiness';
   static String loginOption = '/loginOption';
+  static String otpScreen = '/otpScreen';
 
 
   /// Home Screens
@@ -14,6 +17,7 @@ class RoutePaths {
   static String profilePage = '/profilePage';
   static String chatRoomScreen = '/chatSpaceScreen';
   static String chatSpaceScreen = '/chatSpaceScreen';
+  static String notificationsScreen = '/notificationsScreen';
 
 
   /// Dashboard Screens
@@ -31,10 +35,14 @@ class RoutePaths {
   /// Payment Status Screens
   static String paymentSuccess = '/paymentSuccess';
   static String paymentFailed = '/paymentFailed';
+  static String paymentNotifierPage = '/paymentNotifiPage';
+  static String userOptionPage = '/userOptionPage';
 
 
 
   static String cardDetailsPage = '/manageAccountPage/cardDetailsPage';
+
+  static String accountCreated = '/accountCreated';
 
 
 }

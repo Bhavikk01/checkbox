@@ -1,9 +1,13 @@
 
 import 'package:checkbox1/app/routes/route_paths.dart';
+import 'package:checkbox1/app/screens/auth_screen/verify_code_screen.dart';
 import 'package:checkbox1/app/screens/dashboard_pages/send_money_page.dart';
 import 'package:checkbox1/app/screens/home_page/chat_space_page.dart';
 import 'package:checkbox1/app/screens/home_page/getx_helper/chat_space_bindings.dart';
 import 'package:checkbox1/app/screens/home_page/profile_page.dart';
+import 'package:checkbox1/app/screens/payment_status/getx_helper/payment_notifier_binding.dart';
+import 'package:checkbox1/app/screens/payment_status/getx_helper/user_option_binding.dart';
+import 'package:checkbox1/app/screens/payment_status/payment_notifi_page.dart';
 import 'package:checkbox1/app/screens/payment_status/payment_success_page.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/add_funds_page.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/manage_accounts/card_details_page.dart';
@@ -14,12 +18,12 @@ import 'package:get/get.dart';
 import '../screens/auth_screen/getx_helper/auth_binding.dart';
 import '../screens/auth_screen/login_options.dart';
 import '../screens/auth_screen/login_screen.dart';
-import '../screens/auth_screen/sign_up_screen.dart';
 import '../screens/auth_screen/splash_screen.dart';
 import '../screens/dashboard_pages/my_qr_code.dart';
 import '../screens/home_page/getx_helper/home_binding.dart';
 import '../screens/home_page/home_screen.dart';
 import '../screens/payment_status/payment_failed_page.dart';
+import '../screens/payment_status/user_option_page.dart';
 
 class RouteClass {
 
@@ -44,9 +48,25 @@ class RouteClass {
       binding: AuthBinding(),
     ),
     GetPage(
-      name: RoutePaths.signUpScreen,
-      page: () => const SignUpScreen(),
+      name: RoutePaths.otpScreen,
+      page: () => const VerifyCodePage(),
     ),
+    // GetPage(
+    //   name: RoutePaths.accountCreated,
+    //   page: () => const AccountSuccessPage(),
+    // ),
+    // GetPage(
+    //   name: RoutePaths.signUpOptionScreen,
+    //   page: () => const SignUpOptionScreen(),
+    // ),
+    // GetPage(
+    //   name: RoutePaths.signUpIndividual,
+    //   page: () => const SignUpIndividualScreen(),
+    // ),
+    // GetPage(
+    //   name: RoutePaths.signUpBusiness,
+    //   page: () => const SignUpBusinessScreen(),
+    // ),
 
 
     ///MainPages
@@ -104,6 +124,16 @@ class RouteClass {
     GetPage(
       name: RoutePaths.paymentSuccess,
       page: () => const PaymentSuccessPage(),
+    ),
+    GetPage(
+      name: RoutePaths.paymentNotifierPage,
+      page: () => const PaymentNotifierPage(),
+      binding: PaymentNotifierBinding()
+    ),
+    GetPage(
+      name: RoutePaths.userOptionPage,
+      page: () => const UserOptionPage(),
+      binding: UserOptionBinding()
     ),
 
   ];

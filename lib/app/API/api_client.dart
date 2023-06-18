@@ -39,9 +39,9 @@ class ApiClient extends GetConnect implements GetxService {
       {
         'first_name': user.firstName,
         'last_name': user.lastName,
-        'email': user.email,
-        'password': user.password,
-        'phone_no': user.phoneNumber,
+        'email': user.cashboxAccount.cashboxEmail,
+        'password': user.cashboxAccount.cashboxPassword,
+        'phone_no': user.cashboxAccount.cashboxPhoneNumber,
         'username': '${user.firstName} ${user.lastName}'
       },
       headers: {

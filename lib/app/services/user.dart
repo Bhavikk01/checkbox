@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:get/get.dart';
 
+import '../models/enums/user_role.dart';
 import '../models/user_model/user_model.dart';
 import '../routes/route_paths.dart';
 import '../services/storage.dart';
@@ -19,11 +20,22 @@ class UserStore extends GetxController {
   final _profile = const UserModel(
     uid: '',
     photoId: '',
-    email: '',
-    phoneNumber: '',
     lastName: '',
     firstName: '',
-    password: ''
+    userRole: UserRole.individualRole,
+    socialSecurityNumber: '',
+    dob: '',
+    userAddress: AddressModel(
+      userAddress: '',
+      userZIPCode: '',
+      userState: '',
+      userCity: '',
+    ),
+    cashboxAccount: CashBoxAccountModel(
+      cashboxPhoneNumber: '',
+      cashboxEmail: '',
+      cashboxPassword: '',
+    ),
   ).obs;
 
   bool get isLogin => _isLogin.value;

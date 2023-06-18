@@ -1,5 +1,3 @@
-import 'package:checkbox1/app/API/api_client.dart';
-import 'package:checkbox1/app/screens/home_page/getx_helper/search_user_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +18,6 @@ Future<void> main() async {
       options: DefaultFirebaseOptions.currentPlatform
   );
   Get.put<FirebaseFireStore>(FirebaseFireStore());
-  Get.put<SearchUserController>(SearchUserController());
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
   Get.lazyPut<ChatRoomController>(() => ChatRoomController());

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/chat_room_model/chat_room_model.dart';
+import '../models/enums/user_role.dart';
 import '../models/user_model/user_model.dart';
 
 class FirebaseFireStore extends GetxController {
@@ -24,7 +25,8 @@ class FirebaseFireStore extends GetxController {
     return doc.exists ? UserModel.fromJson(doc.data()!) : null;
   }
 
-  Future<void> sendMessage(Map<String, dynamic> messageContent, String chatRoomId) async {
+  Future<void> sendMessage(
+      Map<String, dynamic> messageContent, String chatRoomId) async {
     return await fireStore
         .collection('chats')
         .doc(chatRoomId)
@@ -82,7 +84,8 @@ class FirebaseFireStore extends GetxController {
     try {
       User? user;
       UserModel? userModel;
-      final UserCredential userCredential = await auth.signInWithEmailAndPassword(
+      final UserCredential userCredential =
+          await auth.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -114,19 +117,63 @@ class FirebaseFireStore extends GetxController {
       User? user;
       UserModel? newUser;
       UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-          email: userModel.email, password: userModel.password);
+          email: userModel.cashboxAccount.cashboxEmail,
+          password: userModel.cashboxAccount.cashboxPassword);
       user = userCredential.user;
       newUser = await getUser(user!.uid);
       if (newUser == null) {
-        newUser = UserModel(
-          uid: user.uid,
-          firstName: userModel.firstName,
-          lastName: userModel.lastName,
-          email: user.email ?? '',
-          photoId: user.photoURL ?? '',
-          phoneNumber: userModel.phoneNumber ?? '',
-          password: userModel.password,
-        );
+        if (userModel.userRole == UserRole.individualRole) {
+          newUser = const UserModel(
+            uid: '',
+            photoId: '',
+            lastName: '',
+            firstName: '',
+            userRole: UserRole.individualRole,
+            socialSecurityNumber: '',
+            dob: '',
+            userAddress: AddressModel(
+              userAddress: '',
+              userZIPCode: '',
+              userState: '',
+              userCity: '',
+            ),
+            cashboxAccount: CashBoxAccountModel(
+              cashboxPhoneNumber: '',
+              cashboxEmail: '',
+              cashboxPassword: '',
+            ),
+          );
+        } else {
+          newUser = const UserModel(
+            uid: '',
+            photoId: '',
+            lastName: '',
+            firstName: '',
+            userRole: UserRole.individualRole,
+            socialSecurityNumber: '',
+            dob: '',
+            userAddress: AddressModel(
+              userAddress: '',
+              userZIPCode: '',
+              userState: '',
+              userCity: '',
+            ),
+            cashboxAccount: CashBoxAccountModel(
+              cashboxPhoneNumber: '',
+              cashboxEmail: '',
+              cashboxPassword: '',
+            ),
+            businessDetails: BusinessDetailsModel(
+              businessName: '',
+              businessEmail: '',
+              businessEIN: '',
+              businessAddress: '',
+              businessZIPCode: '',
+              businessCity: '',
+              businessState: '',
+            ),
+          );
+        }
         await addUser(newUser);
         await UserStore.to.saveProfile(user.uid);
 
@@ -183,5 +230,4 @@ class FirebaseFireStore extends GetxController {
         .where("firstName", isEqualTo: username)
         .get();
   }
-
 }
