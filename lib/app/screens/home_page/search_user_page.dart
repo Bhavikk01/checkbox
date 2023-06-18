@@ -22,6 +22,16 @@ class SearchUserPage extends GetView<SearchUserController> {
           font: '',
           textColor: Colors.white,
         ),
+        actions: [
+          Icon(
+            Icons.close,
+            color: Colors.white,
+            size: 25.h,
+          ),
+          SizedBox(
+            width: 20.w,
+          )
+        ],
         centerTitle: true,
       ),
       body: Container(

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../payment_status/payment_failed_page.dart';
 import '../chatting_page.dart';
 import '../payment_history_page.dart';
+import '../payment_notifi_page.dart';
 import '../search_user_page.dart';
 
 class HomePageController extends GetxController {
@@ -15,7 +16,7 @@ class HomePageController extends GetxController {
     const TransactionHistoryPage(),
     const ChattingPage(),
     const DashboardPage(),
-    const SearchUserPage(),
+    const PaymentNotifierPage(),
     const ProfilePage(),
   ];
 

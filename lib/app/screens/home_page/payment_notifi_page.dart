@@ -14,7 +14,7 @@ class PaymentNotifierPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         title: CustomTextField(
-          text: 'Search User',
+          text: 'Payment Requests',
           fontWeight: FontWeight.w500,
           fontSize: 18.sp,
           font: '',
