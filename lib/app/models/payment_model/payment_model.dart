@@ -12,9 +12,10 @@ class PaymentModel with _$PaymentModel{
   const factory PaymentModel({
     required String paymentId,
     required String sendToUserId,
+    required String sendFromUserId,
     required String sendToUserName,
     required String paymentDescription,
-    required String paymentFromUID,
+    required String paymentFrom,
     required DateTime dateOfPay,
     required String amount,
     required String currency,

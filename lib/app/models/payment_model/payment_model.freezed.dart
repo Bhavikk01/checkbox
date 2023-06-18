@@ -22,9 +22,10 @@ PaymentModel _$PaymentModelFromJson(Map<String, dynamic> json) {
 mixin _$PaymentModel {
   String get paymentId => throw _privateConstructorUsedError;
   String get sendToUserId => throw _privateConstructorUsedError;
+  String get sendFromUserId => throw _privateConstructorUsedError;
   String get sendToUserName => throw _privateConstructorUsedError;
   String get paymentDescription => throw _privateConstructorUsedError;
-  String get paymentFromUID => throw _privateConstructorUsedError;
+  String get paymentFrom => throw _privateConstructorUsedError;
   DateTime get dateOfPay => throw _privateConstructorUsedError;
   String get amount => throw _privateConstructorUsedError;
   String get currency => throw _privateConstructorUsedError;
@@ -45,9 +46,10 @@ abstract class $PaymentModelCopyWith<$Res> {
   $Res call(
       {String paymentId,
       String sendToUserId,
+      String sendFromUserId,
       String sendToUserName,
       String paymentDescription,
-      String paymentFromUID,
+      String paymentFrom,
       DateTime dateOfPay,
       String amount,
       String currency,
@@ -69,9 +71,10 @@ class _$PaymentModelCopyWithImpl<$Res, $Val extends PaymentModel>
   $Res call({
     Object? paymentId = null,
     Object? sendToUserId = null,
+    Object? sendFromUserId = null,
     Object? sendToUserName = null,
     Object? paymentDescription = null,
-    Object? paymentFromUID = null,
+    Object? paymentFrom = null,
     Object? dateOfPay = null,
     Object? amount = null,
     Object? currency = null,
@@ -86,6 +89,10 @@ class _$PaymentModelCopyWithImpl<$Res, $Val extends PaymentModel>
           ? _value.sendToUserId
           : sendToUserId // ignore: cast_nullable_to_non_nullable
               as String,
+      sendFromUserId: null == sendFromUserId
+          ? _value.sendFromUserId
+          : sendFromUserId // ignore: cast_nullable_to_non_nullable
+              as String,
       sendToUserName: null == sendToUserName
           ? _value.sendToUserName
           : sendToUserName // ignore: cast_nullable_to_non_nullable
@@ -94,9 +101,9 @@ class _$PaymentModelCopyWithImpl<$Res, $Val extends PaymentModel>
           ? _value.paymentDescription
           : paymentDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentFromUID: null == paymentFromUID
-          ? _value.paymentFromUID
-          : paymentFromUID // ignore: cast_nullable_to_non_nullable
+      paymentFrom: null == paymentFrom
+          ? _value.paymentFrom
+          : paymentFrom // ignore: cast_nullable_to_non_nullable
               as String,
       dateOfPay: null == dateOfPay
           ? _value.dateOfPay
@@ -129,9 +136,10 @@ abstract class _$$_PaymentModelCopyWith<$Res>
   $Res call(
       {String paymentId,
       String sendToUserId,
+      String sendFromUserId,
       String sendToUserName,
       String paymentDescription,
-      String paymentFromUID,
+      String paymentFrom,
       DateTime dateOfPay,
       String amount,
       String currency,
@@ -151,9 +159,10 @@ class __$$_PaymentModelCopyWithImpl<$Res>
   $Res call({
     Object? paymentId = null,
     Object? sendToUserId = null,
+    Object? sendFromUserId = null,
     Object? sendToUserName = null,
     Object? paymentDescription = null,
-    Object? paymentFromUID = null,
+    Object? paymentFrom = null,
     Object? dateOfPay = null,
     Object? amount = null,
     Object? currency = null,
@@ -168,6 +177,10 @@ class __$$_PaymentModelCopyWithImpl<$Res>
           ? _value.sendToUserId
           : sendToUserId // ignore: cast_nullable_to_non_nullable
               as String,
+      sendFromUserId: null == sendFromUserId
+          ? _value.sendFromUserId
+          : sendFromUserId // ignore: cast_nullable_to_non_nullable
+              as String,
       sendToUserName: null == sendToUserName
           ? _value.sendToUserName
           : sendToUserName // ignore: cast_nullable_to_non_nullable
@@ -176,9 +189,9 @@ class __$$_PaymentModelCopyWithImpl<$Res>
           ? _value.paymentDescription
           : paymentDescription // ignore: cast_nullable_to_non_nullable
               as String,
-      paymentFromUID: null == paymentFromUID
-          ? _value.paymentFromUID
-          : paymentFromUID // ignore: cast_nullable_to_non_nullable
+      paymentFrom: null == paymentFrom
+          ? _value.paymentFrom
+          : paymentFrom // ignore: cast_nullable_to_non_nullable
               as String,
       dateOfPay: null == dateOfPay
           ? _value.dateOfPay
@@ -206,9 +219,10 @@ class _$_PaymentModel implements _PaymentModel {
   const _$_PaymentModel(
       {required this.paymentId,
       required this.sendToUserId,
+      required this.sendFromUserId,
       required this.sendToUserName,
       required this.paymentDescription,
-      required this.paymentFromUID,
+      required this.paymentFrom,
       required this.dateOfPay,
       required this.amount,
       required this.currency,
@@ -222,11 +236,13 @@ class _$_PaymentModel implements _PaymentModel {
   @override
   final String sendToUserId;
   @override
+  final String sendFromUserId;
+  @override
   final String sendToUserName;
   @override
   final String paymentDescription;
   @override
-  final String paymentFromUID;
+  final String paymentFrom;
   @override
   final DateTime dateOfPay;
   @override
@@ -238,7 +254,7 @@ class _$_PaymentModel implements _PaymentModel {
 
   @override
   String toString() {
-    return 'PaymentModel(paymentId: $paymentId, sendToUserId: $sendToUserId, sendToUserName: $sendToUserName, paymentDescription: $paymentDescription, paymentFromUID: $paymentFromUID, dateOfPay: $dateOfPay, amount: $amount, currency: $currency, paymentStatus: $paymentStatus)';
+    return 'PaymentModel(paymentId: $paymentId, sendToUserId: $sendToUserId, sendFromUserId: $sendFromUserId, sendToUserName: $sendToUserName, paymentDescription: $paymentDescription, paymentFrom: $paymentFrom, dateOfPay: $dateOfPay, amount: $amount, currency: $currency, paymentStatus: $paymentStatus)';
   }
 
   @override
@@ -250,12 +266,14 @@ class _$_PaymentModel implements _PaymentModel {
                 other.paymentId == paymentId) &&
             (identical(other.sendToUserId, sendToUserId) ||
                 other.sendToUserId == sendToUserId) &&
+            (identical(other.sendFromUserId, sendFromUserId) ||
+                other.sendFromUserId == sendFromUserId) &&
             (identical(other.sendToUserName, sendToUserName) ||
                 other.sendToUserName == sendToUserName) &&
             (identical(other.paymentDescription, paymentDescription) ||
                 other.paymentDescription == paymentDescription) &&
-            (identical(other.paymentFromUID, paymentFromUID) ||
-                other.paymentFromUID == paymentFromUID) &&
+            (identical(other.paymentFrom, paymentFrom) ||
+                other.paymentFrom == paymentFrom) &&
             (identical(other.dateOfPay, dateOfPay) ||
                 other.dateOfPay == dateOfPay) &&
             (identical(other.amount, amount) || other.amount == amount) &&
@@ -271,9 +289,10 @@ class _$_PaymentModel implements _PaymentModel {
       runtimeType,
       paymentId,
       sendToUserId,
+      sendFromUserId,
       sendToUserName,
       paymentDescription,
-      paymentFromUID,
+      paymentFrom,
       dateOfPay,
       amount,
       currency,
@@ -297,9 +316,10 @@ abstract class _PaymentModel implements PaymentModel {
   const factory _PaymentModel(
       {required final String paymentId,
       required final String sendToUserId,
+      required final String sendFromUserId,
       required final String sendToUserName,
       required final String paymentDescription,
-      required final String paymentFromUID,
+      required final String paymentFrom,
       required final DateTime dateOfPay,
       required final String amount,
       required final String currency,
@@ -313,11 +333,13 @@ abstract class _PaymentModel implements PaymentModel {
   @override
   String get sendToUserId;
   @override
+  String get sendFromUserId;
+  @override
   String get sendToUserName;
   @override
   String get paymentDescription;
   @override
-  String get paymentFromUID;
+  String get paymentFrom;
   @override
   DateTime get dateOfPay;
   @override

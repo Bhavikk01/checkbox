@@ -37,6 +37,7 @@ class HomePageController extends GetxController {
     transactionHistory.clear();
     var transactionData = await FirebaseFireStore.to.getAllTransaction();
     var notificationData = await FirebaseFireStore.to.getNotifications();
+    log(notificationData.docs.toString());
 
     for(var notification in notificationData.docs){
       notifications.add(PaymentModel.fromJson(notification.data()));

@@ -23,10 +23,12 @@ import '../screens/auth_screen/sign_up_business/business_registration.dart';
 import '../screens/auth_screen/sign_up_individual/register_individual.dart';
 import '../screens/auth_screen/sign_up_option.dart';
 import '../screens/auth_screen/splash_screen.dart';
+import '../screens/dashboard_pages/getx_helper/send_money_binding.dart';
 import '../screens/dashboard_pages/my_qr_code.dart';
 import '../screens/home_page/getx_helper/home_binding.dart';
 import '../screens/home_page/home_screen.dart';
 import '../screens/payment_status/payment_failed_page.dart';
+import '../screens/payment_status/success_payment_request.dart';
 import '../screens/payment_status/user_option_page.dart';
 
 class RouteClass {
@@ -100,6 +102,7 @@ class RouteClass {
     GetPage(
       name: RoutePaths.sendMoneyPage,
       page: () => SendMoneyPage(),
+      binding: SendMoneyBinding()
     ),
 
 
@@ -139,6 +142,11 @@ class RouteClass {
     GetPage(
       name: RoutePaths.userOptionPage,
       page: () => const UserOptionPage(),
+      binding: UserOptionBinding()
+    ),
+    GetPage(
+      name: RoutePaths.successNotification,
+      page: () => const SuccessNotification(),
       binding: UserOptionBinding()
     ),
 

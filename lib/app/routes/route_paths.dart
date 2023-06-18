@@ -37,6 +37,7 @@ class RoutePaths {
   static String paymentFailed = '/paymentFailed';
   static String paymentNotifierPage = '/paymentNotifiPage';
   static String userOptionPage = '/userOptionPage';
+  static String successNotification = '/successNotification';
 
 
 

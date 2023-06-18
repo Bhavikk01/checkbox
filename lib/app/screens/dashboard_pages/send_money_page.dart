@@ -1,34 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/circular_button.dart';
 import '../../widgets/custom_text_field.dart';
 import '../../widgets/custom_text_input_field.dart';
+import 'getx_helper/send_money_controller.dart';
 
-class SendMoneyPage extends StatelessWidget {
-  SendMoneyPage({Key? key}) : super(key: key);
-
-  final List<String> relationShip = [
-    'Select relationship',
-    'Friend',
-    'Parents',
-    'Relative',
-    'Brother',
-    'Manager'
-  ];
-
-  final List<String> purpose = [
-    'Select purpose',
-    'Friend',
-    'Parents',
-    'Relative',
-    'Brother',
-    'Manager'
-  ];
-  final String initialRelation = 'Select relationship';
-  final String initialPurpose = 'Select purpose';
+class SendMoneyPage extends GetView<SendMoneyController> {
+  const SendMoneyPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,38 +44,32 @@ class SendMoneyPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.w),
-                width: double.maxFinite,
+                margin: EdgeInsets.symmetric(vertical: 5.h),
+                padding: EdgeInsets.only(top: 13.h, left: 20.w),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20.r),
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    CustomTextField(
-                      text: 'User name',
-                      fontSize: 12.sp,
-                      font: '',
-                      fontWeight: FontWeight.w600,
-                      textColor: Colors.black38,
-                    ),
-                    CustomTextField(
-                      text: 'ID: 569569689',
-                      fontSize: 18.sp,
-                      font: '',
-                      fontWeight: FontWeight.w700,
-                      textColor: Colors.black,
-                    ),
-                  ],
+                child: CustomTextInputField(
+                  controller: controller.nameController,
+                  fillColor: Colors.white,
+                  fontSize: 18.sp,
+                  fontColor: Colors.black,
+                  fontWeight: FontWeight.w700,
+                  label: 'Name',
+                  hintText: 'Enter the name',
+                  labelFontColor: Colors.black38,
+                  labelFontSize: 14.sp,
+                  labelFontWeight: FontWeight.w500,
+                  onChange: (value) {}
                 ),
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 12.h),
                 child: DropdownButtonFormField(
-                  value: initialRelation,
+                  value: controller.initialRelation,
                   isDense: true,
-                  items: relationShip
+                  items: controller.relationShip
                       .map(
                         (e) => DropdownMenuItem(
                           value: e,
@@ -135,14 +111,14 @@ class SendMoneyPage extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                   ),
                   onChanged: (value) {
-                    // initialRelation = value!;
+                    controller.initialRelation = value!;
                   },
                 ),
               ),
               DropdownButtonFormField(
-                value: initialPurpose,
+                value: controller.initialPurpose,
                 isDense: true,
-                items: purpose
+                items: controller.purpose
                     .map((e) => DropdownMenuItem(
                           value: e,
                           child: Container(
@@ -182,7 +158,7 @@ class SendMoneyPage extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
                 onChanged: (value) {
-                  // initialPurpose = value!;
+                  controller.initialPurpose = value!;
                 },
               ),
               Container(
@@ -199,6 +175,7 @@ class SendMoneyPage extends StatelessWidget {
                     Expanded(
                       child: CustomTextInputField(
                         fillColor: Colors.white,
+                        controller: controller.amount,
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
                         fontColor: Colors.black,
@@ -348,6 +325,9 @@ class SendMoneyPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: ListTile(
+                  onTap: () {
+                    controller.isGhostPay.value = !controller.isGhostPay.value;
+                  },
                   leading: Container(
                     height: 45.h,
                     width: 45.w,
@@ -364,12 +344,14 @@ class SendMoneyPage extends StatelessWidget {
                       size: 28.sp,
                     ),
                   ),
-                  trailing: CupertinoSwitch(
-                    value: true,
-                    activeColor: Colors.amber,
-                    thumbColor: Colors.white,
-                    trackColor: Colors.black26,
-                    onChanged: (val) {},
+                  trailing: Obx(
+                    () =>  CupertinoSwitch(
+                      value: controller.isGhostPay.value,
+                      activeColor: Colors.amber,
+                      thumbColor: Colors.white,
+                      trackColor: Colors.black26,
+                      onChanged: (val) {},
+                    ),
                   ),
                   subtitle: CustomTextField(
                     text: 'Moving Money Anonymously',
@@ -389,8 +371,8 @@ class SendMoneyPage extends StatelessWidget {
               ),
               CircularButton(
                 text: 'PAY',
-                onPressed: () {
-
+                onPressed: () async {
+                  await controller.sendPayment();
                 },
                 width: 220.w,
                 bottomLeft: Radius.circular(40.r),

@@ -64,7 +64,10 @@ class PaymentNotifierPage extends StatelessWidget {
             SizedBox(height: 20.h),
             CircularButton(
               text: "ACCEPT PAYMENT",
-              onPressed: () => log("Accept request"),
+              onPressed: () {
+                ///Have to send again the notification.
+                log("Accept request");
+              },
               width: 230.w,
               bottomLeft: Radius.circular(40.r),
               bottomRight: Radius.circular(40.r),

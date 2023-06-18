@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:checkbox1/app/models/payment_model/payment_model.dart';
 import 'package:checkbox1/app/services/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -171,7 +172,7 @@ class FirebaseFireStore extends GetxController {
     await UserStore.to.getProfile();
   }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> getUserByName(username) async {
+  Future<QuerySnapshot<Map<String, dynamic>>?> getUserByName(username) async {
     return await fireStore
         .collection('Users')
         .where("firstName", isEqualTo: username)
@@ -182,10 +183,12 @@ class FirebaseFireStore extends GetxController {
     var fromTransaction = await fireStore
         .collection('transactions')
         .where('paymentFromUID', isEqualTo: UserStore.to.uid)
+        .orderBy('dateOfPay', descending: false)
         .get();
     var toTransaction = await fireStore
         .collection('notification')
         .where('sendToUserId', isEqualTo: UserStore.to.uid)
+        .orderBy('dateOfPay', descending: false)
         .get();
     fromTransaction.docs.addAll(toTransaction.docs);
     return fromTransaction;
@@ -194,13 +197,27 @@ class FirebaseFireStore extends GetxController {
   Future<QuerySnapshot<Map<String, dynamic>>> getNotifications() async{
     var fromTransaction = await fireStore
         .collection('notification')
-        .where('paymentFromUID', isEqualTo: UserStore.to.uid)
+        .where('sendFromUserId', isEqualTo: UserStore.to.uid)
+        .orderBy('dateOfPay', descending: false)
         .get();
     var toTransaction = await fireStore
         .collection('notification')
         .where('sendToUserId', isEqualTo: UserStore.to.uid)
+        .orderBy('dateOfPay', descending: false)
         .get();
     fromTransaction.docs.addAll(toTransaction.docs);
     return fromTransaction;
+  }
+
+  proceedPayment(PaymentModel paymentModel) async {
+    log("hello");
+    var docId = fireStore
+        .collection('notification')
+        .doc().id;
+    await fireStore
+        .collection('notification')
+        .doc(docId)
+        .set(paymentModel.copyWith(paymentId: docId).toJson());
+    log("hello1");
   }
 }

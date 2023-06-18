@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../models/enums/user_option.dart';
+import '../../routes/route_paths.dart';
 import '../../widgets/circular_button.dart';
 import '../../widgets/custom_text_field.dart';
 import 'getx_helper/user_option_controller.dart';
@@ -52,16 +53,13 @@ class UserOptionPage extends GetView<UserOptionController> {
               },
               child: Obx(
                 () => Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.w),
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+                  padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.w),
+                  margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(15.r),
                     border: Border.all(
-                      color:
-                          controller.character.value == SingingCharacter.BUYER
+                      color: controller.character.value == SingingCharacter.BUYER
                               ? Theme.of(context).colorScheme.primary
                               : Colors.white,
                     ),
@@ -147,7 +145,9 @@ class UserOptionPage extends GetView<UserOptionController> {
             SizedBox(height: 20.h),
             CircularButton(
               text: "CONTINUE",
-              onPressed: () => log("Accept request"),
+              onPressed: () {
+                Get.toNamed(RoutePaths.sendMoneyPage, arguments: {'userOption': controller.character.value});
+              },
               width: 230.w,
               bottomLeft: Radius.circular(40.r),
               bottomRight: Radius.circular(40.r),

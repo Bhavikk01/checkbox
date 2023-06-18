@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'app/routes/route_paths.dart';
 import 'app/routes/routes.dart';
 import 'app/screens/home_page/getx_helper/chat_room_controller.dart';
+import 'app/screens/payment_status/success_payment_request.dart';
 import 'app/services/firebase.dart';
 import 'app/services/storage.dart';
 import 'app/services/user.dart';

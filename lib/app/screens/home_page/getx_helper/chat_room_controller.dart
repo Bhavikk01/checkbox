@@ -80,7 +80,7 @@ class ChatRoomController extends GetxController {
     isSearching = true.obs;
     searchedUsers.clear();
     var data = await FirebaseFireStore.to.getUserByName(username);
-    for(var chat in data.docs){
+    for(var chat in data!.docs){
       searchedUsers.add(UserModel.fromJson(chat.data()));
     }
     isSearching.value = false;
