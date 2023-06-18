@@ -1,4 +1,5 @@
 import 'package:checkbox1/app/routes/route_paths.dart';
+import 'package:checkbox1/app/screens/auth_screen/getx_helper/auth_controller.dart';
 import 'package:checkbox1/app/widgets/custom_text_field.dart';
 import 'package:checkbox1/app/widgets/custom_text_input_field.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,7 @@ import 'package:get/get.dart';
 
 import '../../widgets/circular_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends GetView<AuthController> {
   const LoginScreen({super.key});
 
   @override
@@ -41,6 +42,7 @@ class LoginScreen extends StatelessWidget {
               ),
               child: CustomTextInputField(
                 fillColor: Theme.of(context).colorScheme.secondary,
+                controller: controller.emailController,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
                 label: 'Email',
@@ -59,6 +61,7 @@ class LoginScreen extends StatelessWidget {
               ),
               child: CustomTextInputField(
                 fillColor: Theme.of(context).colorScheme.secondary,
+                controller: controller.passwordController,
                 obscureText: true,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
@@ -71,8 +74,8 @@ class LoginScreen extends StatelessWidget {
             ),
             CircularButton(
               text: "LOGIN",
-              onPressed: () {
-                Get.offAllNamed(RoutePaths.homeScreen);
+              onPressed: () async {
+                await controller.handleLogin();
               },
               width: 220.w,
               bottomLeft: Radius.circular(40.r),

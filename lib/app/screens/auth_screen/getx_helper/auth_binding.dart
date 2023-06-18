@@ -6,7 +6,7 @@ class AuthBinding implements Bindings {
 
   @override
   void dependencies() {
-    Get.lazyPut(() => AuthController());
+    Get.put(AuthController());
   }
 
 }

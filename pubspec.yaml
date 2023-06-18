@@ -44,6 +44,10 @@ dependencies:
   custom_navigation_bar: ^0.8.2
   flutter_credit_card: ^3.0.6
   flutter_ticket: ^1.0.1
+  shared_preferences: ^2.1.1
+  firebase_core: ^2.14.0
+  firebase_auth: ^4.2.1
+  cloud_firestore: ^4.2.0
 
 dev_dependencies:
   flutter_test:

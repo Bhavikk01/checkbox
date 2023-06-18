@@ -2,6 +2,7 @@
 import 'package:checkbox1/app/routes/route_paths.dart';
 import 'package:checkbox1/app/screens/dashboard_pages/send_money_page.dart';
 import 'package:checkbox1/app/screens/home_page/chat_space_page.dart';
+import 'package:checkbox1/app/screens/home_page/getx_helper/chat_space_bindings.dart';
 import 'package:checkbox1/app/screens/home_page/profile_page.dart';
 import 'package:checkbox1/app/screens/payment_status/payment_success_page.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/add_funds_page.dart';
@@ -13,6 +14,7 @@ import 'package:get/get.dart';
 import '../screens/auth_screen/getx_helper/auth_binding.dart';
 import '../screens/auth_screen/login_options.dart';
 import '../screens/auth_screen/login_screen.dart';
+import '../screens/auth_screen/sign_up_screen.dart';
 import '../screens/auth_screen/splash_screen.dart';
 import '../screens/dashboard_pages/my_qr_code.dart';
 import '../screens/home_page/getx_helper/home_binding.dart';
@@ -41,6 +43,10 @@ class RouteClass {
       page: () => const LoginOption(),
       binding: AuthBinding(),
     ),
+    GetPage(
+      name: RoutePaths.signUpScreen,
+      page: () => const SignUpScreen(),
+    ),
 
 
     ///MainPages
@@ -54,8 +60,9 @@ class RouteClass {
         page: () => const ProfilePage(),
     ),
     GetPage(
-        name: RoutePaths.chatSpaceScreen,
-        page: () => const ChatSpace(),
+      name: RoutePaths.chatSpaceScreen,
+      page: () => const ChatSpace(),
+      binding: ChatSpaceBinding(),
     ),
 
 

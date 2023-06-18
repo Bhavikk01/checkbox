@@ -7,24 +7,28 @@ class CustomTextInputField extends StatelessWidget {
   final String hintText;
   final double fontSize;
   final double labelFontSize;
+  final TextEditingController? controller;
   final Color? fillColor;
   final Color? fontColor;
   final Color? labelFontColor;
   final FontWeight fontWeight;
   final FontWeight labelFontWeight;
   final bool obscureText;
+  final Function(String)? onChange;
 
-  const CustomTextInputField({required this.hintText, required this.fontWeight, required this.labelFontColor, required this.labelFontSize, required this.labelFontWeight, required this.label, this.fontColor, this.obscureText = false, required this.fillColor, required this.fontSize,Key? key}) : super(key: key);
+  const CustomTextInputField({required this.hintText, this.onChange, this.controller, required this.fontWeight, required this.labelFontColor, required this.labelFontSize, required this.labelFontWeight, required this.label, this.fontColor, this.obscureText = false, required this.fillColor, required this.fontSize,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       obscureText: obscureText,
+      controller: controller,
       style: GoogleFonts.roboto(
         fontSize: fontSize,
           fontWeight: fontWeight,
           color: fontColor?? Colors.white,
       ),
+      onChanged: onChange,
       decoration: InputDecoration(
         fillColor: fillColor,
         filled: true,
@@ -41,6 +45,7 @@ class CustomTextInputField extends StatelessWidget {
           fontWeight: labelFontWeight,
           color: labelFontColor,
         ),
+
         alignLabelWithHint: true,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabledBorder: OutlineInputBorder(

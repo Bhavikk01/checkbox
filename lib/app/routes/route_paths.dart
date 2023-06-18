@@ -5,12 +5,14 @@ class RoutePaths {
 
   /// Auth Screens
   static String loginScreen = '/loginScreen';
+  static String signUpScreen = '/signUpScreen';
   static String loginOption = '/loginOption';
 
 
   /// Home Screens
   static String homeScreen = '/HomeScreen';
   static String profilePage = '/profilePage';
+  static String chatRoomScreen = '/chatSpaceScreen';
   static String chatSpaceScreen = '/chatSpaceScreen';
 
 

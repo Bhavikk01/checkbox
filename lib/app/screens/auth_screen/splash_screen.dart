@@ -1,4 +1,5 @@
 import 'package:checkbox1/app/routes/route_paths.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,9 +15,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(
       const Duration(seconds: 4),
-      () {
-        Get.offAndToNamed(RoutePaths.loginOption);
-      },
+      () => FirebaseAuth.instance.currentUser != null
+          ? Get.offAndToNamed(RoutePaths.homeScreen)
+          : Get.offAndToNamed(RoutePaths.loginOption)
     );
     super.initState();
   }

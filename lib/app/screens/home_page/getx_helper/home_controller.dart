@@ -6,15 +6,16 @@ import 'package:get/get.dart';
 import '../../payment_status/payment_failed_page.dart';
 import '../chatting_page.dart';
 import '../payment_history_page.dart';
+import '../search_user_page.dart';
 
 class HomePageController extends GetxController {
 
 
   List<Widget> screens = [
     const TransactionHistoryPage(),
-    ChattingPage(),
+    const ChattingPage(),
     const DashboardPage(),
-    const PaymentFailedPage(),
+    const SearchUserPage(),
     const ProfilePage(),
   ];
 

@@ -9,8 +9,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../widgets/circular_button.dart';
 import '../../widgets/custom_text_field.dart';
+import 'getx_helper/auth_controller.dart';
 
-class LoginOption extends StatelessWidget {
+class LoginOption extends GetView<AuthController> {
   const LoginOption({super.key});
 
   @override
@@ -58,7 +59,7 @@ class LoginOption extends StatelessWidget {
                 ),
                 InkWell(
                   onTap: () {
-                    Get.toNamed(RoutePaths.loginScreen);
+                    Get.toNamed(RoutePaths.signUpScreen);
                   },
                   child: CustomTextField(
                     text: "SIGN UP",
@@ -81,7 +82,7 @@ class LoginOption extends StatelessWidget {
                       TextSpan(
                         text: "Login",
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () => log('pressed1'),
+                          ..onTap = () => Get.toNamed(RoutePaths.loginScreen),
                         style: GoogleFonts.roboto(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
