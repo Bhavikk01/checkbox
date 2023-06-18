@@ -1,5 +1,8 @@
 
 import 'package:checkbox1/app/routes/route_paths.dart';
+import 'package:checkbox1/app/screens/ayans_layout/business_registration.dart';
+import 'package:checkbox1/app/screens/ayans_layout/registerationpage.dart';
+import 'package:checkbox1/app/screens/ayans_layout/sigup_option.dart';
 import 'package:checkbox1/app/screens/dashboard_pages/send_money_page.dart';
 import 'package:checkbox1/app/screens/home_page/chat_space_page.dart';
 import 'package:checkbox1/app/screens/home_page/getx_helper/chat_space_bindings.dart';
@@ -105,6 +108,19 @@ class RouteClass {
       name: RoutePaths.paymentSuccess,
       page: () => const PaymentSuccessPage(),
     ),
-
+    
+    //// Signup Pages
+    GetPage(
+      name: RoutePaths.signUppage,
+      page: () => const SignUpOption(),
+    ),
+    GetPage(
+      name: RoutePaths.registrationpage,
+      page: () =>  RegistrationPage(),
+    ),
+    GetPage(
+      name: RoutePaths.businessregistrationpage,
+      page: () =>  BusinessRegistrationPage(),
+    ),
   ];
 }

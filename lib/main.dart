@@ -1,4 +1,3 @@
-import 'package:checkbox1/app/API/api_client.dart';
 import 'package:checkbox1/app/screens/home_page/getx_helper/search_user_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         getPages: RouteClass.routes,
-        initialRoute: RoutePaths.splashScreen,
+        initialRoute: RoutePaths.signUppage,
       );
     });
   }

@@ -32,7 +32,10 @@ class RoutePaths {
   static String paymentSuccess = '/paymentSuccess';
   static String paymentFailed = '/paymentFailed';
 
-
+  //// SignUp Screens
+  static String signUppage = '/signUppage';
+  static String registrationpage = '/registrationpage';
+  static String businessregistrationpage = '/businessregistrationpage';
 
   static String cardDetailsPage = '/manageAccountPage/cardDetailsPage';
 

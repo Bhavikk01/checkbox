@@ -15,6 +15,7 @@ class CustomTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
+      
       text,
       textAlign: textAlign?? TextAlign.start,
       maxLines: lines,
