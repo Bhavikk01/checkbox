@@ -19,19 +19,30 @@ class SignUpController extends GetxController {
   TextEditingController dobController = TextEditingController();
   TextEditingController addressController = TextEditingController();
   TextEditingController userZipController = TextEditingController();
-  TextEditingController userStateController = TextEditingController();
   TextEditingController userCityController = TextEditingController();
   TextEditingController socialSecurityController = TextEditingController();
 
 
   ///Business Text Field
   TextEditingController businessAddressController = TextEditingController();
-  TextEditingController businessStateController = TextEditingController();
   TextEditingController businessCityController = TextEditingController();
   TextEditingController businessZIPController = TextEditingController();
   TextEditingController businessEINController = TextEditingController();
   TextEditingController businessNameController = TextEditingController();
   TextEditingController businessEmailController = TextEditingController();
+
+
+  final List<String> state = [
+    'State',
+    'Indore',
+    'Pune',
+    'Rachi',
+    'Delhi',
+    'Mumbai',
+    'Banglore'
+  ];
+  String selectedBusinessState = 'State';
+  String selectedState = 'State';
 
 
   ///Checkbox
@@ -44,7 +55,7 @@ class SignUpController extends GetxController {
 
   @override
   void onInit(){
-    UserRole data = Get.arguments;
+    UserRole data = Get.arguments['userRole'];
     if(data == UserRole.individualRole){
       userRole = UserRole.individualRole;
     }else{
@@ -101,7 +112,7 @@ class SignUpController extends GetxController {
                 userAddress: AddressModel(
                   userAddress: addressController.text,
                   userCity: userCityController.text,
-                  userState: userStateController.text,
+                  userState: selectedState,
                   userZIPCode: userZipController.text,
                 ),
                 socialSecurityNumber: socialSecurityController.text,
@@ -126,7 +137,7 @@ class SignUpController extends GetxController {
                 userAddress: AddressModel(
                   userAddress: addressController.text,
                   userCity: userCityController.text,
-                  userState: userStateController.text,
+                  userState: selectedState,
                   userZIPCode: userZipController.text,
                 ),
                 businessDetails: BusinessDetailsModel(
@@ -135,7 +146,7 @@ class SignUpController extends GetxController {
                   businessEIN: businessEINController.text,
                   businessEmail: businessEmailController.text,
                   businessName: businessNameController.text,
-                  businessState: businessStateController.text,
+                  businessState: selectedBusinessState,
                   businessZIPCode: businessZIPController.text,
                 ),
                 socialSecurityNumber: socialSecurityController.text,
@@ -164,7 +175,21 @@ class SignUpController extends GetxController {
     if(GetUtils.isEmail(emailController.text)){
       if(passwordController.text.length > 6){
         if(passwordController.text == confirmPasswordController.text){
-          return true;
+          if(checkbox1.value && checkbox2.value && checkbox3.value){
+            return true;
+          }else{
+            Get.snackbar(
+              'Auth',
+              'Please accept all terms and conditions',
+              borderRadius: 15,
+              margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+              snackPosition: SnackPosition.BOTTOM,
+              backgroundColor: Colors.white,
+              colorText: const Color(0xff041c50),
+              icon: const Icon(Icons.person),
+            );
+            return false;
+          }
         }else{
           Get.snackbar(
             'Auth',

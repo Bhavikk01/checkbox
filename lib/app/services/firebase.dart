@@ -122,61 +122,8 @@ class FirebaseFireStore extends GetxController {
       user = userCredential.user;
       newUser = await getUser(user!.uid);
       if (newUser == null) {
-        if (userModel.userRole == UserRole.individualRole) {
-          newUser = const UserModel(
-            uid: '',
-            photoId: '',
-            lastName: '',
-            firstName: '',
-            userRole: UserRole.individualRole,
-            socialSecurityNumber: '',
-            dob: '',
-            userAddress: AddressModel(
-              userAddress: '',
-              userZIPCode: '',
-              userState: '',
-              userCity: '',
-            ),
-            cashboxAccount: CashBoxAccountModel(
-              cashboxPhoneNumber: '',
-              cashboxEmail: '',
-              cashboxPassword: '',
-            ),
-          );
-        } else {
-          newUser = const UserModel(
-            uid: '',
-            photoId: '',
-            lastName: '',
-            firstName: '',
-            userRole: UserRole.individualRole,
-            socialSecurityNumber: '',
-            dob: '',
-            userAddress: AddressModel(
-              userAddress: '',
-              userZIPCode: '',
-              userState: '',
-              userCity: '',
-            ),
-            cashboxAccount: CashBoxAccountModel(
-              cashboxPhoneNumber: '',
-              cashboxEmail: '',
-              cashboxPassword: '',
-            ),
-            businessDetails: BusinessDetailsModel(
-              businessName: '',
-              businessEmail: '',
-              businessEIN: '',
-              businessAddress: '',
-              businessZIPCode: '',
-              businessCity: '',
-              businessState: '',
-            ),
-          );
-        }
-        await addUser(newUser);
+        await addUser(userModel.copyWith(uid: user.uid));
         await UserStore.to.saveProfile(user.uid);
-
         return true;
       } else {
         return false;
@@ -229,5 +176,31 @@ class FirebaseFireStore extends GetxController {
         .collection('Users')
         .where("firstName", isEqualTo: username)
         .get();
+  }
+
+ Future<QuerySnapshot<Map<String, dynamic>>> getAllTransaction() async {
+    var fromTransaction = await fireStore
+        .collection('transactions')
+        .where('paymentFromUID', isEqualTo: UserStore.to.uid)
+        .get();
+    var toTransaction = await fireStore
+        .collection('notification')
+        .where('sendToUserId', isEqualTo: UserStore.to.uid)
+        .get();
+    fromTransaction.docs.addAll(toTransaction.docs);
+    return fromTransaction;
+ }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getNotifications() async{
+    var fromTransaction = await fireStore
+        .collection('notification')
+        .where('paymentFromUID', isEqualTo: UserStore.to.uid)
+        .get();
+    var toTransaction = await fireStore
+        .collection('notification')
+        .where('sendToUserId', isEqualTo: UserStore.to.uid)
+        .get();
+    fromTransaction.docs.addAll(toTransaction.docs);
+    return fromTransaction;
   }
 }

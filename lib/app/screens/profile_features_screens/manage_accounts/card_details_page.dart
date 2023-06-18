@@ -211,6 +211,10 @@ class CardDetailsPage extends StatelessWidget {
                   // controller.saveCard();
                 },
                 text: 'SAVE CARD',
+                bottomLeft: Radius.circular(20.r),
+                bottomRight: Radius.circular(20.r),
+                topLeft: Radius.circular(20.r),
+                topRight: Radius.circular(20.r),
                 width: 220.w,
               )
             ],

@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:checkbox1/app/routes/route_paths.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../widgets/circular_button.dart';
+import '../../models/enums/user_role.dart';
 import '../../widgets/custom_text_field.dart';
-//import 'getx_helper/auth_controller.dart';
 
-class SignUpOption extends GetView {
+class SignUpOption extends StatelessWidget {
   const SignUpOption({super.key});
 
   @override
@@ -31,7 +28,7 @@ class SignUpOption extends GetView {
                   fit: BoxFit.fitWidth,
                 ),
                 Container(
-                  margin: EdgeInsets.only(right: 60.w, left: 60.w, top: 20.h),
+                  margin: EdgeInsets.only(right: 60.w, left: 60.w, top: 10.h),
                   child: Column(
                     children: [
                       CustomTextField(
@@ -64,7 +61,7 @@ class SignUpOption extends GetView {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(RoutePaths.registrationpage);
+                        Get.toNamed(RoutePaths.signUpIndividual, arguments: {'userRole' : UserRole.individualRole});
                       },
                       child: Container(
                         height: 135.h,
@@ -140,7 +137,8 @@ class SignUpOption extends GetView {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Get.toNamed(RoutePaths.businessregistrationpage);
+                        Get.toNamed(RoutePaths.signUpBusiness, arguments: {'userRole' : UserRole.businessRole});
+
                       },
                       child: Container(
                         height: 135.h,

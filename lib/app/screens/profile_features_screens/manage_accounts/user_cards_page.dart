@@ -23,16 +23,11 @@ class UserCardsPage extends StatelessWidget {
             itemCount: 10,
             shrinkWrap: true,
             itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: (){
-                  Get.toNamed(RoutePaths.cardDetailsPage);
-                },
-                child: const DebitCardDesign(
-                  cardHolderName: 'Bhavik Kothari',
-                  cardNumber: '6401063361304598',
-                  expiryDate: '03/23',
-                  cardIcon: 'assets/master_card.png',
-                ),
+              return const DebitCardDesign(
+                cardHolderName: 'Bhavik Kothari',
+                cardNumber: '6401063361304598',
+                expiryDate: '03/23',
+                cardIcon: 'assets/master_card.png',
               );
             },
           ),

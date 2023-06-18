@@ -38,13 +38,9 @@ class RoutePaths {
   static String paymentNotifierPage = '/paymentNotifiPage';
   static String userOptionPage = '/userOptionPage';
 
-  //// SignUp Screens
-  static String signUppage = '/signUppage';
-  static String registrationpage = '/registrationpage';
-  static String businessregistrationpage = '/businessregistrationpage';
+
 
   static String cardDetailsPage = '/manageAccountPage/cardDetailsPage';
-
   static String accountCreated = '/accountCreated';
 
 

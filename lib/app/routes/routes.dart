@@ -1,5 +1,6 @@
 
 import 'package:checkbox1/app/routes/route_paths.dart';
+import 'package:checkbox1/app/screens/auth_screen/getx_helper/sign_up_binding.dart';
 import 'package:checkbox1/app/screens/auth_screen/verify_code_screen.dart';
 import 'package:checkbox1/app/screens/dashboard_pages/send_money_page.dart';
 import 'package:checkbox1/app/screens/home_page/chat_space_page.dart';
@@ -18,6 +19,9 @@ import 'package:get/get.dart';
 import '../screens/auth_screen/getx_helper/auth_binding.dart';
 import '../screens/auth_screen/login_options.dart';
 import '../screens/auth_screen/login_screen.dart';
+import '../screens/auth_screen/sign_up_business/business_registration.dart';
+import '../screens/auth_screen/sign_up_individual/register_individual.dart';
+import '../screens/auth_screen/sign_up_option.dart';
 import '../screens/auth_screen/splash_screen.dart';
 import '../screens/dashboard_pages/my_qr_code.dart';
 import '../screens/home_page/getx_helper/home_binding.dart';
@@ -55,18 +59,20 @@ class RouteClass {
     //   name: RoutePaths.accountCreated,
     //   page: () => const AccountSuccessPage(),
     // ),
-    // GetPage(
-    //   name: RoutePaths.signUpOptionScreen,
-    //   page: () => const SignUpOptionScreen(),
-    // ),
-    // GetPage(
-    //   name: RoutePaths.signUpIndividual,
-    //   page: () => const SignUpIndividualScreen(),
-    // ),
-    // GetPage(
-    //   name: RoutePaths.signUpBusiness,
-    //   page: () => const SignUpBusinessScreen(),
-    // ),
+    GetPage(
+      name: RoutePaths.signUpOptionScreen,
+      page: () => const SignUpOption(),
+    ),
+    GetPage(
+      name: RoutePaths.signUpIndividual,
+      page: () => SignUpIndividualScreen(),
+      binding: SignUpBinding()
+    ),
+    GetPage(
+      name: RoutePaths.signUpBusiness,
+      page: () => SignUpBusinessScreen(),
+      binding: SignUpBinding()
+    ),
 
 
     ///MainPages
