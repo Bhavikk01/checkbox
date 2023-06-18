@@ -9,6 +9,7 @@ class UserModel with _$UserModel{
 
   const factory UserModel({
     required String uid,
+    required double balance,
     required String firstName,
     required String lastName,
     required String photoId,

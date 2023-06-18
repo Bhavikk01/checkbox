@@ -253,4 +253,11 @@ class FirebaseFireStore extends GetxController {
         .set(cardModel.toJson());
   }
 
+  Future<void> logout() async {
+    await auth.signOut();
+    await UserStore.to.onLogout();
+  }
+
+
+
 }

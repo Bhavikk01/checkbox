@@ -1,4 +1,6 @@
 import 'package:checkbox1/app/routes/route_paths.dart';
+import 'package:checkbox1/app/services/firebase.dart';
+import 'package:checkbox1/app/services/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -24,14 +26,16 @@ class ProfilePage extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          Icon(
-            Icons.more_vert,
-            color: Colors.white,
-            size: 25.h,
+          IconButton(
+            icon: Icon(
+              Icons.logout,
+              color: Colors.white,
+              size: 25.h,
+            ),
+            onPressed: () {
+              FirebaseFireStore.to.logout();
+            },
           ),
-          SizedBox(
-            width: 20.w,
-          )
         ],
       ),
       body: SingleChildScrollView(
@@ -57,12 +61,14 @@ class ProfilePage extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomTextField(
-                          text: 'USD 123,550.00',
-                          font: 'roboto',
-                          fontSize: 23.sp,
-                          fontWeight: FontWeight.w700,
-                          textColor: Colors.white,
+                        Obx(
+                        () => CustomTextField(
+                            text: 'USD ${UserStore.to.profile.balance}',
+                            font: 'roboto',
+                            fontSize: 23.sp,
+                            fontWeight: FontWeight.w700,
+                            textColor: Colors.white,
+                          ),
                         ),
                         SizedBox(height: 3.h),
                         CustomTextField(

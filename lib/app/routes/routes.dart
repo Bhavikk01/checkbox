@@ -12,6 +12,7 @@ import 'package:checkbox1/app/screens/payment_status/getx_helper/user_option_bin
 import 'package:checkbox1/app/screens/payment_status/payment_notifi_page.dart';
 import 'package:checkbox1/app/screens/payment_status/payment_success_page.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/add_funds_page.dart';
+import 'package:checkbox1/app/screens/profile_features_screens/getx_controller/balance_manager_binding.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/manage_accounts/card_details_page.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/manage_accounts/getx_helper/manage_account_binding.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/manage_accounts/manage_account_screen.dart';
@@ -59,22 +60,18 @@ class RouteClass {
       name: RoutePaths.otpScreen,
       page: () => const VerifyCodePage(),
     ),
-    // GetPage(
-    //   name: RoutePaths.accountCreated,
-    //   page: () => const AccountSuccessPage(),
-    // ),
     GetPage(
       name: RoutePaths.signUpOptionScreen,
       page: () => const SignUpOption(),
     ),
     GetPage(
       name: RoutePaths.signUpIndividual,
-      page: () => SignUpIndividualScreen(),
+      page: () => const SignUpIndividualScreen(),
       binding: SignUpBinding()
     ),
     GetPage(
       name: RoutePaths.signUpBusiness,
-      page: () => SignUpBusinessScreen(),
+      page: () => const SignUpBusinessScreen(),
       binding: SignUpBinding()
     ),
 
@@ -98,12 +95,8 @@ class RouteClass {
 
     ///Dashboard Pages
     GetPage(
-        name: RoutePaths.myQrCode,
-        page: () => const MyQrCode(),
-    ),
-    GetPage(
       name: RoutePaths.sendMoneyPage,
-      page: () => SendMoneyPage(),
+      page: () => const SendMoneyPage(),
       binding: SendMoneyBinding()
     ),
 
@@ -112,10 +105,12 @@ class RouteClass {
     GetPage(
       name: RoutePaths.addFundsPage,
       page: () => AddFundsPage(),
+      binding: BalanceManageBinding(),
     ),
     GetPage(
       name: RoutePaths.withdrawFundsPage,
       page: () => WithdrawFundsPage(),
+        binding: BalanceManageBinding(),
     ),
     GetPage(
       name: RoutePaths.manageAccountPage,

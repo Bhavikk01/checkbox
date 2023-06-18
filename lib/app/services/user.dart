@@ -20,6 +20,7 @@ class UserStore extends GetxController {
   final _profile = const UserModel(
     uid: '',
     photoId: '',
+    balance: 0,
     lastName: '',
     firstName: '',
     userRole: UserRole.individualRole,
@@ -77,6 +78,6 @@ class UserStore extends GetxController {
     await StorageService.to.remove(userNameKey);
     _isLogin.value = false;
     uid = '';
-    Get.offAllNamed(RoutePaths.loginScreen);
+    Get.offAllNamed(RoutePaths.loginOption);
   }
 }

@@ -39,6 +39,8 @@ class SendMoneyController extends GetxController {
   TextEditingController amount = TextEditingController();
   TextEditingController nameController = TextEditingController();
 
+  Rx<double> totalAmount = 0.0.obs;
+
   @override
   void onInit() {
     userOption = Get.arguments['userOption'];
@@ -83,6 +85,14 @@ class SendMoneyController extends GetxController {
       }catch(err){
         Get.toNamed(RoutePaths.paymentFailed, arguments: {'transaction': paymentModel});
       }
+    }
+  }
+
+  countTotalAmount() {
+    if(amount.text.isNotEmpty && double.parse(amount.text) >= 12){
+      totalAmount.value = double.parse(amount.text) - 12;
+    }else{
+      totalAmount.value = 0.0;
     }
   }
 }

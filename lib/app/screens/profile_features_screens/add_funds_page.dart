@@ -7,8 +7,9 @@ import '../../routes/route_paths.dart';
 import '../../widgets/circular_button.dart';
 import '../../widgets/custom_text_field.dart';
 import '../../widgets/custom_text_input_field.dart';
+import 'getx_controller/balance_manage_controller.dart';
 
-class AddFundsPage extends StatelessWidget {
+class AddFundsPage extends GetView<BalanceManageController> {
   AddFundsPage({Key? key}) : super(key: key);
 
 
@@ -108,6 +109,7 @@ class AddFundsPage extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20.r),
               ),
               child: CustomTextInputField(
+                controller: controller.addMoney,
                 fillColor: Colors.white,
                 fontSize: 18.sp,
                 fontColor: Colors.black,
@@ -122,8 +124,8 @@ class AddFundsPage extends StatelessWidget {
             SizedBox(height: 30.h),
             CircularButton(
               text: "ADD FUNDS",
-              onPressed: () {
-                Get.offAllNamed(RoutePaths.homeScreen);
+              onPressed: () async {
+                await controller.addBalance();
               },
               width: 240.w,
               bottomLeft: Radius.circular(40.r),

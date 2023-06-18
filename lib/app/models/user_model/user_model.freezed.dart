@@ -21,6 +21,7 @@ UserModel _$UserModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserModel {
   String get uid => throw _privateConstructorUsedError;
+  double get balance => throw _privateConstructorUsedError;
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get photoId => throw _privateConstructorUsedError;
@@ -45,6 +46,7 @@ abstract class $UserModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String uid,
+      double balance,
       String firstName,
       String lastName,
       String photoId,
@@ -74,6 +76,7 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
   @override
   $Res call({
     Object? uid = null,
+    Object? balance = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? photoId = null,
@@ -89,6 +92,10 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      balance: null == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as double,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -167,6 +174,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
   @useResult
   $Res call(
       {String uid,
+      double balance,
       String firstName,
       String lastName,
       String photoId,
@@ -197,6 +205,7 @@ class __$$_UserModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? uid = null,
+    Object? balance = null,
     Object? firstName = null,
     Object? lastName = null,
     Object? photoId = null,
@@ -212,6 +221,10 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.uid
           : uid // ignore: cast_nullable_to_non_nullable
               as String,
+      balance: null == balance
+          ? _value.balance
+          : balance // ignore: cast_nullable_to_non_nullable
+              as double,
       firstName: null == firstName
           ? _value.firstName
           : firstName // ignore: cast_nullable_to_non_nullable
@@ -257,6 +270,7 @@ class __$$_UserModelCopyWithImpl<$Res>
 class _$_UserModel implements _UserModel {
   const _$_UserModel(
       {required this.uid,
+      required this.balance,
       required this.firstName,
       required this.lastName,
       required this.photoId,
@@ -272,6 +286,8 @@ class _$_UserModel implements _UserModel {
 
   @override
   final String uid;
+  @override
+  final double balance;
   @override
   final String firstName;
   @override
@@ -293,7 +309,7 @@ class _$_UserModel implements _UserModel {
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, firstName: $firstName, lastName: $lastName, photoId: $photoId, userRole: $userRole, socialSecurityNumber: $socialSecurityNumber, dob: $dob, businessDetails: $businessDetails, cashboxAccount: $cashboxAccount, userAddress: $userAddress)';
+    return 'UserModel(uid: $uid, balance: $balance, firstName: $firstName, lastName: $lastName, photoId: $photoId, userRole: $userRole, socialSecurityNumber: $socialSecurityNumber, dob: $dob, businessDetails: $businessDetails, cashboxAccount: $cashboxAccount, userAddress: $userAddress)';
   }
 
   @override
@@ -302,6 +318,7 @@ class _$_UserModel implements _UserModel {
         (other.runtimeType == runtimeType &&
             other is _$_UserModel &&
             (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.balance, balance) || other.balance == balance) &&
             (identical(other.firstName, firstName) ||
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
@@ -325,6 +342,7 @@ class _$_UserModel implements _UserModel {
   int get hashCode => Object.hash(
       runtimeType,
       uid,
+      balance,
       firstName,
       lastName,
       photoId,
@@ -352,6 +370,7 @@ class _$_UserModel implements _UserModel {
 abstract class _UserModel implements UserModel {
   const factory _UserModel(
       {required final String uid,
+      required final double balance,
       required final String firstName,
       required final String lastName,
       required final String photoId,
@@ -367,6 +386,8 @@ abstract class _UserModel implements UserModel {
 
   @override
   String get uid;
+  @override
+  double get balance;
   @override
   String get firstName;
   @override

@@ -38,123 +38,125 @@ class UserOptionPage extends GetView<UserOptionController> {
           )
         ],
       ),
-      body: Container(
-        margin: EdgeInsets.symmetric(vertical: 30.h, horizontal: 20.w),
-        child: Column(
-          children: [
-            Image.asset(
-              'assets/signup.png',
-              fit: BoxFit.cover,
-            ),
-            SizedBox(height: 100.h),
-            GestureDetector(
-              onTap: () {
-                controller.character.value = SingingCharacter.BUYER;
-              },
-              child: Obx(
-                () => Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.w),
-                  margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15.r),
-                    border: Border.all(
-                      color: controller.character.value == SingingCharacter.BUYER
-                              ? Theme.of(context).colorScheme.primary
-                              : Colors.white,
+      body: SingleChildScrollView(
+        child: Container(
+          margin: EdgeInsets.symmetric(vertical: 30.h, horizontal: 20.w),
+          child: Column(
+            children: [
+              Image.asset(
+                'assets/signup.png',
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 100.h),
+              GestureDetector(
+                onTap: () {
+                  controller.character.value = SingingCharacter.BUYER;
+                },
+                child: Obx(
+                  () => Container(
+                    padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.w),
+                    margin: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15.r),
+                      border: Border.all(
+                        color: controller.character.value == SingingCharacter.BUYER
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.white,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Radio<SingingCharacter>(
-                        fillColor: MaterialStateColor.resolveWith(
-                          (states) => Colors.black,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Radio<SingingCharacter>(
+                          fillColor: MaterialStateColor.resolveWith(
+                            (states) => Colors.black,
+                          ),
+                          value: SingingCharacter.BUYER,
+                          groupValue: controller.character.value,
+                          onChanged: (SingingCharacter? value) {
+                            controller.character.value = value;
+                          },
                         ),
-                        value: SingingCharacter.BUYER,
-                        groupValue: controller.character.value,
-                        onChanged: (SingingCharacter? value) {
-                          controller.character.value = value;
-                        },
-                      ),
-                      const Icon(Icons.person),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      CustomTextField(
-                        text: "BUYER",
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        font: '',
-                        textColor: Colors.black,
-                      ),
-                    ],
+                        const Icon(Icons.person),
+                        SizedBox(
+                          width: 20.w,
+                        ),
+                        CustomTextField(
+                          text: "BUYER",
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          font: '',
+                          textColor: Colors.black,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            GestureDetector(
-              onTap: () {
-                controller.character.value = SingingCharacter.SELLER;
-              },
-              child: Obx(
-                () => Container(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.w),
-                  margin:
-                      EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(15.r),
-                    border: Border.all(
-                      color:
-                          controller.character.value == SingingCharacter.SELLER
-                              ? Theme.of(context).colorScheme.primary
-                              : Colors.white,
+              GestureDetector(
+                onTap: () {
+                  controller.character.value = SingingCharacter.SELLER;
+                },
+                child: Obx(
+                  () => Container(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.w),
+                    margin:
+                        EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15.r),
+                      border: Border.all(
+                        color:
+                            controller.character.value == SingingCharacter.SELLER
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.white,
+                      ),
                     ),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Radio<SingingCharacter>(
-                        fillColor: MaterialStateColor.resolveWith(
-                          (states) => Colors.black,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Radio<SingingCharacter>(
+                          fillColor: MaterialStateColor.resolveWith(
+                            (states) => Colors.black,
+                          ),
+                          value: SingingCharacter.SELLER,
+                          groupValue: controller.character.value,
+                          onChanged: (SingingCharacter? value) {
+                            controller.character.value = value;
+                          },
                         ),
-                        value: SingingCharacter.SELLER,
-                        groupValue: controller.character.value,
-                        onChanged: (SingingCharacter? value) {
-                          controller.character.value = value;
-                        },
-                      ),
-                      const Icon(Icons.person),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      CustomTextField(
-                        text: "SELLER",
-                        fontSize: 16.sp,
-                        fontWeight: FontWeight.w500,
-                        font: '',
-                        textColor: Colors.black,
-                      ),
-                    ],
+                        const Icon(Icons.person),
+                        SizedBox(
+                          width: 20.w,
+                        ),
+                        CustomTextField(
+                          text: "SELLER",
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          font: '',
+                          textColor: Colors.black,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 20.h),
-            CircularButton(
-              text: "CONTINUE",
-              onPressed: () {
-                Get.toNamed(RoutePaths.sendMoneyPage, arguments: {'userOption': controller.character.value});
-              },
-              width: 230.w,
-              bottomLeft: Radius.circular(40.r),
-              bottomRight: Radius.circular(40.r),
-              topLeft: Radius.circular(40.r),
-              topRight: Radius.circular(40.r),
-            ),
-          ],
+              SizedBox(height: 20.h),
+              CircularButton(
+                text: "CONTINUE",
+                onPressed: () {
+                  Get.toNamed(RoutePaths.sendMoneyPage, arguments: {'userOption': controller.character.value});
+                },
+                width: 230.w,
+                bottomLeft: Radius.circular(40.r),
+                bottomRight: Radius.circular(40.r),
+                topLeft: Radius.circular(40.r),
+                topRight: Radius.circular(40.r),
+              ),
+            ],
+          ),
         ),
       ),
     );

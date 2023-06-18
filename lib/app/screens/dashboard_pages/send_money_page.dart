@@ -184,6 +184,9 @@ class SendMoneyPage extends GetView<SendMoneyController> {
                         labelFontColor: Colors.black45,
                         labelFontSize: 15.sp,
                         labelFontWeight: FontWeight.w700,
+                        onChange: (value){
+                          controller.countTotalAmount();
+                        },
                       ),
                     ),
                     Container(
@@ -218,7 +221,7 @@ class SendMoneyPage extends GetView<SendMoneyController> {
                       textColor: Colors.black38,
                     ),
                     CustomTextField(
-                      text: '2.00 USD',
+                      text: '12.00 USD',
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
                       font: '',
@@ -265,12 +268,14 @@ class SendMoneyPage extends GetView<SendMoneyController> {
                       font: '',
                       textColor: Colors.black38,
                     ),
-                    CustomTextField(
-                      text: '72.00 USD',
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18.sp,
-                      font: '',
-                      textColor: Colors.black,
+                    Obx(
+                      () => CustomTextField(
+                        text: '${controller.totalAmount} USD',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18.sp,
+                        font: '',
+                        textColor: Colors.black,
+                      ),
                     ),
                   ],
                 ),

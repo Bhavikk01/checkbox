@@ -100,6 +100,7 @@ class SignUpController extends GetxController {
         if(await FirebaseFireStore.to.handleEmailSignUp(
             UserModel(
                 uid: '',
+                balance: 0,
                 photoId: '',
                 firstName: fNameController.text,
                 lastName: lNameController.text,
@@ -125,6 +126,7 @@ class SignUpController extends GetxController {
         if(await FirebaseFireStore.to.handleEmailSignUp(
             UserModel(
                 uid: '',
+                balance: 0,
                 photoId: '',
                 firstName: fNameController.text,
                 lastName: lNameController.text,

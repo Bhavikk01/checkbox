@@ -57,12 +57,14 @@ class DashboardPage extends GetView<HomePageController> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          CustomTextField(
-                            text: 'USD 123,550.00',
-                            font: 'roboto',
-                            fontSize: 23.sp,
-                            fontWeight: FontWeight.w700,
-                            textColor: Colors.white,
+                          Obx(
+                          () => CustomTextField(
+                              text: 'USD ${UserStore.to.profile.balance}',
+                              font: 'roboto',
+                              fontSize: 23.sp,
+                              fontWeight: FontWeight.w700,
+                              textColor: Colors.white,
+                            ),
                           ),
                           SizedBox(height: 3.h),
                           CustomTextField(
@@ -238,7 +240,7 @@ class DashboardPage extends GetView<HomePageController> {
                 ),
                 !controller.isNotificationsLoading.value
                     ? ListView.builder(
-                        itemCount: controller.transactionHistory.length > 2 ? 2: controller.transactionHistory.length,
+                        itemCount: controller.transactionHistory.length > 3 ? 3: controller.transactionHistory.length,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (context, index) {
