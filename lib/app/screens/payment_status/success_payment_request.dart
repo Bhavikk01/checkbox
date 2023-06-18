@@ -18,7 +18,7 @@ class _SuccessNotificationState extends State<SuccessNotification> {
     super.initState();
     Future.delayed(
       const Duration(seconds: 3),
-      () => Get.toNamed(RoutePaths.homeScreen),
+      () => Get.offAllNamed(RoutePaths.homeScreen),
     );
   }
 
@@ -48,38 +48,38 @@ class _SuccessNotificationState extends State<SuccessNotification> {
         ],
       ),
       body: Container(
-          margin: EdgeInsets.symmetric(vertical: 30.h, horizontal: 5.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Center(
-                child: Container(
-                  height: 140.h,
-                  width: 140.w,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Color(0xff34da39),
-                  ),
-                  child: Icon(
-                    Icons.check_circle,
-                    color: Colors.white,
-                    size: 100.h,
-                  ),
+        margin: EdgeInsets.symmetric(vertical: 30.h, horizontal: 5.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Container(
+                height: 140.h,
+                width: 140.w,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(0xff34da39),
+                ),
+                child: Icon(
+                  Icons.check_circle,
+                  color: Colors.white,
+                  size: 100.h,
                 ),
               ),
-              SizedBox(height: 20.h),
-              CustomTextField(
-                text:
-                    'Payment request has been generated and sent successfully to the user',
-                fontWeight: FontWeight.w500,
-                textAlign: TextAlign.center,
-                fontSize: 18.sp,
-                font: '',
-                textColor: Colors.black,
-              ),
-            ],
-          )),
+            ),
+            SizedBox(height: 20.h),
+            CustomTextField(
+              text: 'Payment request has been generated and sent successfully to the user',
+              fontWeight: FontWeight.w500,
+              textAlign: TextAlign.center,
+              fontSize: 18.sp,
+              font: '',
+              textColor: Colors.black,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

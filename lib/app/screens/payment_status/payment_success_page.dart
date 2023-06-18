@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_ticket/flutter_ticket.dart';
+import 'package:get/get.dart';
 
+import '../../routes/route_paths.dart';
 import '../../widgets/custom_text_field.dart';
+import 'getx_helper/payment_status_controller.dart';
 
-class PaymentSuccessPage extends StatelessWidget {
+class PaymentSuccessPage extends GetView<PaymentStatusController> {
   const PaymentSuccessPage({Key? key}) : super(key: key);
 
   @override
@@ -13,6 +16,7 @@ class PaymentSuccessPage extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
+        automaticallyImplyLeading: false,
         title: CustomTextField(
           text: 'Payment Status',
           fontWeight: FontWeight.w500,
@@ -22,13 +26,15 @@ class PaymentSuccessPage extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          Icon(
-            Icons.close,
-            color: Colors.white,
-            size: 25.h,
-          ),
-          SizedBox(
-            width: 20.w,
+          IconButton(
+            icon: Icon(
+              Icons.close,
+              color: Colors.white,
+              size: 25.h,
+            ),
+            onPressed: () {
+              Get.offAllNamed(RoutePaths.homeScreen);
+            },
           )
         ],
       ),
@@ -84,7 +90,9 @@ class PaymentSuccessPage extends StatelessWidget {
                               bottom: 10.h,
                             ),
                             padding: EdgeInsets.symmetric(
-                                vertical: 10.h, horizontal: 10.h),
+                              vertical: 10.h,
+                              horizontal: 10.h,
+                            ),
                             decoration: BoxDecoration(
                               color: Theme.of(context)
                                   .colorScheme
@@ -108,9 +116,12 @@ class PaymentSuccessPage extends StatelessWidget {
                                   children: [
                                     Container(
                                       constraints: BoxConstraints(
-                                          minWidth: 10.w, maxWidth: 140.w),
+                                        minWidth: 10.w,
+                                        maxWidth: 140.w,
+                                      ),
                                       child: CustomTextField(
-                                        text: 'User Name',
+                                        text:
+                                            controller.paymentModel.paymentFrom,
                                         fontWeight: FontWeight.w700,
                                         lines: 1,
                                         fontSize: 13.sp,
@@ -120,9 +131,12 @@ class PaymentSuccessPage extends StatelessWidget {
                                     ),
                                     Container(
                                       constraints: BoxConstraints(
-                                          minWidth: 10.w, maxWidth: 140.w),
+                                        minWidth: 10.w,
+                                        maxWidth: 140.w,
+                                      ),
                                       child: CustomTextField(
-                                        text: 'ID: 5684644868787',
+                                        text:
+                                            'ID: ${controller.paymentModel.paymentId}',
                                         fontWeight: FontWeight.w500,
                                         fontSize: 12.sp,
                                         lines: 1,
@@ -183,10 +197,11 @@ class PaymentSuccessPage extends StatelessWidget {
                                     Container(
                                       constraints: BoxConstraints(
                                         minWidth: 10.w,
-                                        maxWidth: 100.w
+                                        maxWidth: 100.w,
                                       ),
                                       child: CustomTextField(
-                                        text: '04 Aug 2022',
+                                        text:
+                                            '${controller.paymentModel.dateOfPay.day}/${controller.paymentModel.dateOfPay.month}/${controller.paymentModel.dateOfPay.year}',
                                         fontWeight: FontWeight.w700,
                                         fontSize: 13.sp,
                                         lines: 1,
@@ -208,7 +223,8 @@ class PaymentSuccessPage extends StatelessWidget {
                                       textColor: Colors.black38,
                                     ),
                                     CustomTextField(
-                                      text: '11:04:50',
+                                      text:
+                                          '${controller.paymentModel.dateOfPay.hour}:${controller.paymentModel.dateOfPay.minute}:${controller.paymentModel.dateOfPay.second}',
                                       fontWeight: FontWeight.w700,
                                       fontSize: 13.sp,
                                       lines: 1,
@@ -231,8 +247,8 @@ class PaymentSuccessPage extends StatelessWidget {
                               children: [
                                 Container(
                                   constraints: BoxConstraints(
-                                      minWidth: 10.w,
-                                      maxWidth: 100.w
+                                    minWidth: 10.w,
+                                    maxWidth: 100.w,
                                   ),
                                   child: CustomTextField(
                                     text: 'Amount',
@@ -245,11 +261,12 @@ class PaymentSuccessPage extends StatelessWidget {
                                 ),
                                 Container(
                                   constraints: BoxConstraints(
-                                      minWidth: 10.w,
-                                      maxWidth: 120.w
+                                    minWidth: 10.w,
+                                    maxWidth: 120.w,
                                   ),
                                   child: CustomTextField(
-                                    text: 'USD: 75.00',
+                                    text:
+                                        'USD: ${controller.paymentModel.amount}',
                                     fontWeight: FontWeight.w700,
                                     fontSize: 15.sp,
                                     lines: 1,

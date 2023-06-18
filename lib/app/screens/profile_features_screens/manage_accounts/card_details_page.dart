@@ -1,12 +1,14 @@
+import 'package:checkbox1/app/screens/profile_features_screens/manage_accounts/getx_helper/manage_account_controller.dart';
 import 'package:checkbox1/app/widgets/circular_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../../widgets/custom_text_field.dart';
 import '../../../widgets/custom_text_input_field.dart';
 
-class CardDetailsPage extends StatelessWidget {
+class CardDetailsPage extends GetView<ManageAccountController> {
   const CardDetailsPage({Key? key}) : super(key: key);
 
   @override
@@ -48,6 +50,7 @@ class CardDetailsPage extends StatelessWidget {
                 ),
                 child: CustomTextInputField(
                   fillColor: Colors.white,
+                  controller: controller.bankName,
                   fontSize: 18.sp,
                   fontWeight: FontWeight.w700,
                   fontColor: Colors.black,
@@ -71,11 +74,12 @@ class CardDetailsPage extends StatelessWidget {
                     Expanded(
                       child: CustomTextInputField(
                         fillColor: Colors.white,
+                        controller: controller.cardNumber,
                         fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
                         fontColor: Colors.black,
-                        label: 'You send',
-                        hintText: 'Amount',
+                        label: 'Card',
+                        hintText: 'Card Number',
                         labelFontColor: Colors.black45,
                         labelFontSize: 15.sp,
                         labelFontWeight: FontWeight.w700,
@@ -83,7 +87,6 @@ class CardDetailsPage extends StatelessWidget {
                     ),
                     Image.asset(
                       'assets/master_card.png',
-
                     ),
                     SizedBox(
                       width: 20.w,
@@ -100,6 +103,7 @@ class CardDetailsPage extends StatelessWidget {
                 child: CustomTextInputField(
                   fillColor: Colors.white,
                   fontSize: 18.sp,
+                  controller: controller.cardHolderName,
                   fontWeight: FontWeight.w700,
                   fontColor: Colors.black,
                   label: 'Name on card',
@@ -125,6 +129,7 @@ class CardDetailsPage extends StatelessWidget {
                           fillColor: Colors.white,
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w700,
+                          controller: controller.cardExpiry,
                           fontColor: Colors.black,
                           label: 'Valid Through',
                           hintText: 'Expiry',
@@ -138,7 +143,6 @@ class CardDetailsPage extends StatelessWidget {
                       child: Container(
                         padding: EdgeInsets.only(top: 15.h, bottom: 5.h, left: 15.w),
                         margin: EdgeInsets.only(left: 10.w),
-
                         decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(20.r),
@@ -146,6 +150,7 @@ class CardDetailsPage extends StatelessWidget {
                         child: CustomTextInputField(
                           fillColor: Colors.white,
                           fontSize: 18.sp,
+                          controller: controller.cardCvv,
                           fontWeight: FontWeight.w700,
                           fontColor: Colors.black,
                           label: 'CVV',
@@ -166,6 +171,9 @@ class CardDetailsPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20.r),
                   ),
                   child: ListTile(
+                    onTap: () {
+                      controller.isDefault.value = !controller.isDefault.value;
+                    },
                     leading: Container(
                       height: 50.h,
                       width: 50.w,
@@ -182,12 +190,14 @@ class CardDetailsPage extends StatelessWidget {
                         size: 28.sp,
                       ),
                     ),
-                    trailing: CupertinoSwitch(
-                      value: true,
-                      activeColor: Colors.amber,
-                      thumbColor: Colors.white,
-                      trackColor: Colors.black26,
-                      onChanged: (val) {},
+                    trailing: Obx(
+                      () => CupertinoSwitch(
+                        value: controller.isDefault.value,
+                        activeColor: Colors.amber,
+                        thumbColor: Colors.white,
+                        trackColor: Colors.black26,
+                        onChanged: (val) {}
+                      ),
                     ),
                     subtitle: CustomTextField(
                       text: 'Moving Money Anonymously iub',
@@ -208,7 +218,7 @@ class CardDetailsPage extends StatelessWidget {
               ),
               CircularButton(
                 onPressed: () {
-                  // controller.saveCard();
+                  controller.saveCardDetails();
                 },
                 text: 'SAVE CARD',
                 bottomLeft: Radius.circular(20.r),

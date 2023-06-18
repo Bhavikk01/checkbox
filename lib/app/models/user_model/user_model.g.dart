@@ -33,9 +33,9 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'userRole': _$UserRoleEnumMap[instance.userRole]!,
       'socialSecurityNumber': instance.socialSecurityNumber,
       'dob': instance.dob,
-       'businessDetails': instance.businessDetails == null?  null : instance.businessDetails!.toJson(),
-       'cashboxAccount': instance.cashboxAccount.toJson(),
-       'userAddress': instance.userAddress.toJson(),
+      'businessDetails': instance.businessDetails,
+      'cashboxAccount': instance.cashboxAccount,
+      'userAddress': instance.userAddress,
     };
 
 const _$UserRoleEnumMap = {

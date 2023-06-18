@@ -2,11 +2,13 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 import '../../widgets/circular_button.dart';
 import '../../widgets/custom_text_field.dart';
+import 'getx_helper/payment_notifier_controller.dart';
 
-class PaymentNotifierPage extends StatelessWidget {
+class PaymentNotifierPage extends GetView<PaymentNotifierController> {
   const PaymentNotifierPage({Key? key}) : super(key: key);
 
   @override
@@ -64,9 +66,9 @@ class PaymentNotifierPage extends StatelessWidget {
             SizedBox(height: 20.h),
             CircularButton(
               text: "ACCEPT PAYMENT",
-              onPressed: () {
+              onPressed: () async {
                 ///Have to send again the notification.
-                log("Accept request");
+                await controller.onAccept();
               },
               width: 230.w,
               bottomLeft: Radius.circular(40.r),
@@ -76,8 +78,8 @@ class PaymentNotifierPage extends StatelessWidget {
             ),
             SizedBox(height: 15.h),
             InkWell(
-              onTap: () {
-                log("Reject request");
+              onTap: () async {
+                await controller.onReject();
               },
               child: CustomTextField(
                 text: "REJECT PAYMENT",

@@ -72,8 +72,8 @@ class SendMoneyController extends GetxController {
             amount: amount.text,
             dateOfPay: DateTime.now(),
             paymentDescription: initialPurpose,
-            paymentFrom: 'From $userOption',
-            paymentStatus: PaymentStatus.pending,
+            paymentFrom: 'From ${signingCharacterEnumMap[userOption]}',
+            paymentStatus: PaymentStatus.stage1,
             sendToUserId: user.uid,
             sendToUserName: nameController.text,
           );

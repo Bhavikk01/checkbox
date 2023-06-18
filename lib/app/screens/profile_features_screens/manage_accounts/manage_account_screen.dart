@@ -6,9 +6,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../widgets/custom_text_field.dart';
 import 'bank_account_page.dart';
+import 'getx_helper/manage_account_controller.dart';
 import 'user_cards_page.dart';
 
-class ManageAccountScreen extends StatelessWidget {
+class ManageAccountScreen extends GetView<ManageAccountController> {
   const ManageAccountScreen({Key? key}) : super(key: key);
 
   @override

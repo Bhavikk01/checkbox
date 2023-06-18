@@ -7,11 +7,13 @@ import 'package:checkbox1/app/screens/home_page/chat_space_page.dart';
 import 'package:checkbox1/app/screens/home_page/getx_helper/chat_space_bindings.dart';
 import 'package:checkbox1/app/screens/home_page/profile_page.dart';
 import 'package:checkbox1/app/screens/payment_status/getx_helper/payment_notifier_binding.dart';
+import 'package:checkbox1/app/screens/payment_status/getx_helper/payment_status_binding.dart';
 import 'package:checkbox1/app/screens/payment_status/getx_helper/user_option_binding.dart';
 import 'package:checkbox1/app/screens/payment_status/payment_notifi_page.dart';
 import 'package:checkbox1/app/screens/payment_status/payment_success_page.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/add_funds_page.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/manage_accounts/card_details_page.dart';
+import 'package:checkbox1/app/screens/profile_features_screens/manage_accounts/getx_helper/manage_account_binding.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/manage_accounts/manage_account_screen.dart';
 import 'package:checkbox1/app/screens/profile_features_screens/withdraw_page.dart';
 import 'package:get/get.dart';
@@ -118,6 +120,7 @@ class RouteClass {
     GetPage(
       name: RoutePaths.manageAccountPage,
       page: () => const ManageAccountScreen(),
+      binding: ManageAccountBinding()
     ),
     GetPage(
       name: RoutePaths.cardDetailsPage,
@@ -129,10 +132,12 @@ class RouteClass {
     GetPage(
       name: RoutePaths.paymentFailed,
       page: () => const PaymentFailedPage(),
+      binding: PaymentStatusBinding()
     ),
     GetPage(
       name: RoutePaths.paymentSuccess,
       page: () => const PaymentSuccessPage(),
+      binding: PaymentStatusBinding()
     ),
     GetPage(
       name: RoutePaths.paymentNotifierPage,

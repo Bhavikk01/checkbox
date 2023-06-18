@@ -7,14 +7,17 @@ import 'package:checkbox1/app/screens/home_page/profile_page.dart';
 import 'package:checkbox1/app/services/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import '../chatting_page.dart';
 import '../payment_history_page.dart';
 
 class HomePageController extends GetxController {
-
   RxList<PaymentModel> notifications = <PaymentModel>[].obs;
   RxList<PaymentModel> transactionHistory = <PaymentModel>[].obs;
-  var isLoading = false.obs;
+  var isNotificationsLoading = false.obs;
+  var isTransactionLoading = false.obs;
+  RefreshController refreshController = RefreshController();
+  RefreshController refreshController2 = RefreshController();
   Rx<int> index = 2.obs;
   List<Widget> screens = [
     const TransactionHistoryPage(),
@@ -26,27 +29,49 @@ class HomePageController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    await readUserData();
+    await readUserNotifications();
+    await readTransactions();
     super.onInit();
   }
 
-  Future<void> readUserData() async {
-    isLoading.value = true;
+  onRefreshNotifications() {
+    readUserNotifications().then(
+      (_) => refreshController.refreshCompleted(resetFooterState: true),
+    );
+  }
+
+  onRefreshTransaction() {
+    readTransactions().then(
+      (_) => refreshController2.refreshCompleted(resetFooterState: true),
+    );
+  }
+
+  Future<void> readUserNotifications() async {
+    isNotificationsLoading.value = true;
     log('Getting data');
     notifications.clear();
-    transactionHistory.clear();
-    var transactionData = await FirebaseFireStore.to.getAllTransaction();
+
     var notificationData = await FirebaseFireStore.to.getNotifications();
     log(notificationData.docs.toString());
 
-    for(var notification in notificationData.docs){
+    for (var notification in notificationData.docs) {
       notifications.add(PaymentModel.fromJson(notification.data()));
     }
-    for(var transaction in transactionData.docs){
-      transactionHistory.add(PaymentModel.fromJson(transaction.data()));
-    }
-    isLoading.value = false;
+    isNotificationsLoading.value = false;
     log('Got Data');
   }
 
+  Future<void> readTransactions() async {
+    isTransactionLoading.value = true;
+    transactionHistory.clear();
+    var transactionToData = await FirebaseFireStore.to.getToTransactions();
+    var transactionFromData = await FirebaseFireStore.to.getFromTransactions();
+    for (var transaction in transactionToData.docs) {
+      transactionHistory.add(PaymentModel.fromJson(transaction.data()));
+    }
+    for (var transaction in transactionFromData.docs) {
+      transactionHistory.add(PaymentModel.fromJson(transaction.data()));
+    }
+    isTransactionLoading.value = false;
+  }
 }

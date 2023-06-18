@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import '../../models/enums/payment_status.dart';
 import '../../routes/route_paths.dart';
+import '../../services/user.dart';
 import '../../widgets/custom_text_field.dart';
 import 'getx_helper/home_controller.dart';
 
@@ -234,7 +236,7 @@ class DashboardPage extends GetView<HomePageController> {
                     textColor: Colors.black,
                   ),
                 ),
-                !controller.isLoading.value
+                !controller.isNotificationsLoading.value
                     ? ListView.builder(
                         itemCount: controller.transactionHistory.length > 2 ? 2: controller.transactionHistory.length,
                         shrinkWrap: true,
@@ -256,13 +258,15 @@ class DashboardPage extends GetView<HomePageController> {
                                 Row(
                                   children: [
                                     Icon(
-                                      Icons.arrow_downward_rounded,
+                                      controller.transactionHistory[index].sendFromUserId == UserStore.to.uid
+                                          ? Icons.arrow_upward_rounded
+                                          : Icons.arrow_downward_rounded,
                                       size: 30.sp,
                                     ),
                                     SizedBox(width: 10.w),
                                     Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      CrossAxisAlignment.start,
                                       children: [
                                         Container(
                                           constraints: BoxConstraints(
@@ -270,7 +274,7 @@ class DashboardPage extends GetView<HomePageController> {
                                             maxWidth: 150.w,
                                           ),
                                           child: CustomTextField(
-                                            text: 'USD 1,239,898.00',
+                                            text: 'USD ${controller.transactionHistory[index].amount}',
                                             font: 'roboto',
                                             fontSize: 18.sp,
                                             lines: 1,
@@ -280,7 +284,7 @@ class DashboardPage extends GetView<HomePageController> {
                                         ),
                                         SizedBox(height: 3.h),
                                         CustomTextField(
-                                          text: 'Name of the store',
+                                          text: controller.transactionHistory[index].paymentFrom,
                                           font: 'roboto',
                                           fontSize: 11.sp,
                                           fontWeight: FontWeight.w500,
@@ -296,11 +300,13 @@ class DashboardPage extends GetView<HomePageController> {
                                     Row(
                                       children: [
                                         CustomTextField(
-                                          text: 'Failed',
-                                          font: 'roboto',
+                                          text: paymentStatusEnumMap[controller.transactionHistory[index].paymentStatus]!,
+                                          font: '',
                                           fontSize: 11.sp,
                                           fontWeight: FontWeight.w500,
-                                          textColor: Colors.redAccent,
+                                          textColor: paymentStatusEnumMap[controller.transactionHistory[index].paymentStatus]! == 'success'
+                                              ? Colors.lightGreen
+                                              : Colors.redAccent,
                                         ),
                                         SizedBox(width: 10.w),
                                         const Icon(Icons.people_outline_sharp)
@@ -315,8 +321,8 @@ class DashboardPage extends GetView<HomePageController> {
                                         maxWidth: 100.w,
                                       ),
                                       child: CustomTextField(
-                                        text: '#268464998',
-                                        font: 'roboto',
+                                        text: '#${controller.transactionHistory[index].paymentId}',
+                                        font: '',
                                         fontSize: 11.sp,
                                         lines: 1,
                                         fontWeight: FontWeight.w500,

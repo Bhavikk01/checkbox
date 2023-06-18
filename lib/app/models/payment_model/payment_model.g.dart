@@ -39,4 +39,6 @@ const _$PaymentStatusEnumMap = {
   PaymentStatus.pending: 'pending',
   PaymentStatus.rejected: 'rejected',
   PaymentStatus.cancelled: 'cancelled',
+  PaymentStatus.stage1: 'stage1',
+  PaymentStatus.stage2: 'stage2',
 };

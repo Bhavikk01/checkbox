@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:checkbox1/app/models/card_model/card_model.dart';
 import 'package:checkbox1/app/models/payment_model/payment_model.dart';
 import 'package:checkbox1/app/services/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -8,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../models/chat_room_model/chat_room_model.dart';
-import '../models/enums/user_role.dart';
 import '../models/user_model/user_model.dart';
 
 class FirebaseFireStore extends GetxController {
@@ -173,40 +173,38 @@ class FirebaseFireStore extends GetxController {
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>?> getUserByName(username) async {
-    return await fireStore
+
+    final doc = await fireStore
         .collection('Users')
         .where("firstName", isEqualTo: username)
         .get();
+    return doc.docs.isNotEmpty? doc : null;
   }
 
- Future<QuerySnapshot<Map<String, dynamic>>> getAllTransaction() async {
-    var fromTransaction = await fireStore
+ Future<QuerySnapshot<Map<String, dynamic>>> getToTransactions() async {
+    return await fireStore
         .collection('transactions')
-        .where('paymentFromUID', isEqualTo: UserStore.to.uid)
-        .orderBy('dateOfPay', descending: false)
-        .get();
-    var toTransaction = await fireStore
-        .collection('notification')
         .where('sendToUserId', isEqualTo: UserStore.to.uid)
         .orderBy('dateOfPay', descending: false)
         .get();
-    fromTransaction.docs.addAll(toTransaction.docs);
-    return fromTransaction;
  }
 
-  Future<QuerySnapshot<Map<String, dynamic>>> getNotifications() async{
-    var fromTransaction = await fireStore
-        .collection('notification')
+  Future<QuerySnapshot<Map<String, dynamic>>> getFromTransactions() async {
+    return await fireStore
+        .collection('transactions')
         .where('sendFromUserId', isEqualTo: UserStore.to.uid)
         .orderBy('dateOfPay', descending: false)
         .get();
-    var toTransaction = await fireStore
+  }
+
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getNotifications() async{
+
+    return await fireStore
         .collection('notification')
         .where('sendToUserId', isEqualTo: UserStore.to.uid)
         .orderBy('dateOfPay', descending: false)
         .get();
-    fromTransaction.docs.addAll(toTransaction.docs);
-    return fromTransaction;
   }
 
   proceedPayment(PaymentModel paymentModel) async {
@@ -220,4 +218,39 @@ class FirebaseFireStore extends GetxController {
         .set(paymentModel.copyWith(paymentId: docId).toJson());
     log("hello1");
   }
+
+  updatePaymentStatus(PaymentModel paymentModel) async {
+    await fireStore
+        .collection('notification')
+        .doc(paymentModel.paymentId)
+        .update(paymentModel.toJson());
+  }
+
+  finalPayment(PaymentModel paymentModel) async {
+
+    await fireStore
+        .collection('notification')
+        .doc(paymentModel.paymentId)
+        .delete();
+
+    await fireStore
+        .collection('transactions')
+        .doc(paymentModel.paymentId)
+        .set(paymentModel.toJson());
+  }
+
+  Future<QuerySnapshot<Map<String, dynamic>>> getAllUserCards() async {
+    return await fireStore
+        .collection('Cards')
+        .where('cardByUserId', isEqualTo: UserStore.to.uid)
+        .get();
+  }
+
+  Future<void> saveCardDetails(CardModel cardModel) async {
+    await fireStore
+        .collection('Cards')
+        .doc()
+        .set(cardModel.toJson());
+  }
+
 }
