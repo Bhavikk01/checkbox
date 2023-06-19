@@ -33,9 +33,22 @@ class LoginScreen extends GetView<AuthController> {
                 style: TextStyle(fontSize: 18.sp, color: Colors.white),
               ),
             ),
+
+            Container(
+              margin: EdgeInsets.only(left: 25.w),
+              alignment: Alignment.topLeft,
+              child: CustomTextField(
+                text: 'Email',
+                fontWeight: FontWeight.w500,
+                fontSize: 12.sp,
+                font: '',
+                textColor: Colors.white,
+              ),
+            ),
+            SizedBox(height: 5.h,),
             Container(
               margin: EdgeInsets.only(left: 25.w, bottom: 10.h, right: 25.w),
-              padding: EdgeInsets.only(top: 10.h, left: 10.w),
+              padding: EdgeInsets.only(top: 5.h, left: 10.w),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(15.r),
@@ -45,7 +58,7 @@ class LoginScreen extends GetView<AuthController> {
                 controller: controller.emailController,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
-                label: 'Email',
+                label: '',
                 hintText: 'Enter your email',
                 labelFontColor: Colors.white54,
                 labelFontSize: 13.sp,
@@ -53,8 +66,20 @@ class LoginScreen extends GetView<AuthController> {
               ),
             ),
             Container(
+              margin: EdgeInsets.only(left: 25.w),
+              alignment: Alignment.topLeft,
+              child: CustomTextField(
+                text: 'Password',
+                fontWeight: FontWeight.w500,
+                fontSize: 12.sp,
+                font: '',
+                textColor: Colors.white,
+              ),
+            ),
+            SizedBox(height: 5.h,),
+            Container(
               margin: EdgeInsets.only(left: 25.w, bottom: 35.h, right: 25.w),
-              padding: EdgeInsets.only(top: 10.h, left: 10.w),
+              padding: EdgeInsets.only(top: 5.h, left: 10.w),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(15.r),
@@ -65,7 +90,7 @@ class LoginScreen extends GetView<AuthController> {
                 obscureText: true,
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w600,
-                label: 'Password',
+                label: '',
                 hintText: 'Enter your password',
                 labelFontColor: Colors.white54,
                 labelFontSize: 13.sp,

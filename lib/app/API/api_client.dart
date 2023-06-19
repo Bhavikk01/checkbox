@@ -39,25 +39,25 @@ class ApiClient extends GetConnect implements GetxService {
   }
 
   Future<void> signUp(UserModel user) async {
-    Response res = await post(
-      '${requestUrl}register_after_verification',
-      {
-        'first_name': user.firstName,
-        'last_name': user.lastName,
-        'email': user.cashboxAccount.cashboxEmail,
-        'password': user.cashboxAccount.cashboxPassword,
-        'phone_no': user.cashboxAccount.cashboxPhoneNumber,
-        'username': '${user.firstName} ${user.lastName}',
-        'code': 322332
-      },
-      headers: {
-        'content-type': 'application/json',
-      },
-    );
-    var data = res.body['data'];
-    if (res.body['success']) {
-      log(res.body.toString());
-      token = data['token'];
+    // Response res = await post(
+    //   '${requestUrl}register_after_verification',
+    //   {
+    //     'first_name': user.firstName,
+    //     'last_name': user.lastName,
+    //     'email': user.cashboxAccount.cashboxEmail,
+    //     'password': user.cashboxAccount.cashboxPassword,
+    //     'phone_no': user.cashboxAccount.cashboxPhoneNumber,
+    //     'username': '${user.firstName} ${user.lastName}',
+    //     'code': 322332
+    //   },
+    //   headers: {
+    //     'content-type': 'application/json',
+    //   },
+    // );
+    // var data = res.body['data'];
+    // if (res.body['success']) {
+    //   log(res.body.toString());
+    //   token = data['token'];
       UserCredential userCredential = await FirebaseFireStore.to.auth.createUserWithEmailAndPassword(
           email: user.cashboxAccount.cashboxEmail,
           password: user.cashboxAccount.cashboxPassword);
@@ -68,49 +68,49 @@ class ApiClient extends GetConnect implements GetxService {
       UserStore.to.saveProfile(userCredential.user!.uid);
       FirebaseFireStore.to.logout();
       Get.offAndToNamed(RoutePaths.loginScreen);
-    } else {
-      log(res.body.toString());
-      Get.snackbar(
-        'Auth',
-        res.body['data'].toString(),
-        borderRadius: 15,
-        snackPosition: SnackPosition.BOTTOM,
-        colorText: Colors.white,
-        backgroundColor: const Color(0xff041c50),
-        icon: const Icon(Icons.person),
-        margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-      );
-    }
+    // } else {
+    //   log(res.body.toString());
+    //   Get.snackbar(
+    //     'Auth',
+    //     res.body['data'].toString(),
+    //     borderRadius: 15,
+    //     snackPosition: SnackPosition.BOTTOM,
+    //     colorText: Colors.white,
+    //     backgroundColor: const Color(0xff041c50),
+    //     icon: const Icon(Icons.person),
+    //     margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+    //   );
+    // }
   }
 
   Future<void> login(String email, String password) async {
-    Response res = await post(
-      '${requestUrl}login',
-      {'email': email, 'password': password},
-      headers: {
-        'content-type': 'application/json',
-      },
-    );
-    var data = res.body['data'];
-    if (res.body['success']) {
-      ApiClient.to.token = data['token'];
-      log(data.toString());
+    // Response res = await post(
+    //   '${requestUrl}login',
+    //   {'email': email, 'password': password},
+    //   headers: {
+    //     'content-type': 'application/json',
+    //   },
+    // );
+    // var data = res.body['data'];
+    // if (res.body['success']) {
+    //   ApiClient.to.token = data['token'];
+    //   log(data.toString());
       if(await FirebaseFireStore.to.handleEmailSignIn(email, password, data['user_id'])){
         log('fbb');
         Get.offAllNamed(RoutePaths.homeScreen);
       }
-    } else {
-      Get.snackbar(
-        'Auth',
-        data['status'],
-        borderRadius: 15,
-        snackPosition: SnackPosition.BOTTOM,
-        colorText: Colors.white,
-        backgroundColor: const Color(0xff041c50),
-        icon: const Icon(Icons.person),
-        margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
-      );
-    }
+    // } else {
+    //   Get.snackbar(
+    //     'Auth',
+    //     res.body['message'],
+    //     borderRadius: 15,
+    //     snackPosition: SnackPosition.BOTTOM,
+    //     colorText: Colors.white,
+    //     backgroundColor: const Color(0xff041c50),
+    //     icon: const Icon(Icons.person),
+    //     margin: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+    //   );
+    // }
   }
 
   Future<Response> sendMoney(String receiverId, String senderId, String method,
