@@ -33,12 +33,13 @@ class SignUpController extends GetxController {
 
   final List<String> state = [
     'State',
-    'Indore',
-    'Pune',
-    'Rachi',
-    'Delhi',
-    'Mumbai',
-    'Banglore'
+    'Lahore',
+    'Karachi',
+    'Islamabad',
+    'Peshawar',
+    'Multan',
+    'Faisalabad',
+    'Gujranwala'
   ];
   String selectedBusinessState = 'State';
   String selectedState = 'State';
