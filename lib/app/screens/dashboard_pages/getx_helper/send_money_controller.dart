@@ -1,7 +1,6 @@
 
 import 'package:checkbox1/app/services/firebase.dart';
 import 'package:checkbox1/app/services/user.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +14,7 @@ class SendMoneyController extends GetxController {
 
   late SingingCharacter userOption;
   var isGhostPay = false.obs;
+  var willPayFee = false.obs;
   late UserModel user;
   late PaymentModel paymentModel;
   final List<String> relationShip = [
@@ -28,18 +28,21 @@ class SendMoneyController extends GetxController {
 
   final List<String> purpose = [
     'Select purpose',
-    'Friend',
-    'Parents',
-    'Relative',
-    'Brother',
+    'Education',
+    'Poverty',
+    'Urgency',
+    'Health Care',
     'Manager'
   ];
   String initialRelation = 'Select relationship';
   String initialPurpose = 'Select purpose';
+  Rx<String> recipientPay = '0.0'.obs;
   TextEditingController amount = TextEditingController();
   TextEditingController nameController = TextEditingController();
 
   Rx<double> totalAmount = 0.0.obs;
+
+  var amountSend = '0.0'.obs;
 
   @override
   void onInit() {
@@ -89,10 +92,17 @@ class SendMoneyController extends GetxController {
   }
 
   countTotalAmount() {
-    if(amount.text.isNotEmpty && double.parse(amount.text) >= 12){
-      totalAmount.value = double.parse(amount.text) - 12;
+    if(amount.text.isNotEmpty && double.parse(amount.text) >= 2){
+      totalAmount.value = double.parse(amount.text) - 2;
+      if(willPayFee.value){
+        recipientPay.value = (double.parse(amount.text) - 2.0).toString();
+      }else{
+        recipientPay.value = double.parse(amount.text).toString();
+      }
+      
     }else{
       totalAmount.value = 0.0;
+      recipientPay.value = '0.0';
     }
   }
 }

@@ -67,7 +67,6 @@ class SignUpController extends GetxController {
           UserModel(
             uid: '',
             balance: 0,
-            user_id: 0,
             photoId: '',
             firstName: fNameController.text,
             lastName: lNameController.text,
@@ -92,7 +91,6 @@ class SignUpController extends GetxController {
           UserModel(
             uid: '',
             balance: 0,
-            user_id: 0,
             photoId: '',
             firstName: fNameController.text,
             lastName: lNameController.text,

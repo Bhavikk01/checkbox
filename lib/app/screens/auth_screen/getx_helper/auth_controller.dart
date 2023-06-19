@@ -11,6 +11,8 @@ class AuthController extends GetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
+  var isVisible = false.obs;
+
 
   Future<void> handleLogin() async {
     try {

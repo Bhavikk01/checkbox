@@ -81,7 +81,7 @@ class FirebaseFireStore extends GetxController {
     }
   }
 
-  Future<bool> handleEmailSignIn(email, password, userId) async {
+  Future<bool> handleEmailSignIn(email, password) async {
     try {
       User? user;
       UserModel? userModel;
@@ -92,10 +92,11 @@ class FirebaseFireStore extends GetxController {
       );
       user = userCredential.user;
       userModel = await getUser(user!.uid);
+      UserStore.to.saveProfile(user.uid);
       if (userModel == null) {
         return false;
       } else {
-        await updateUserData(userModel.copyWith(user_id: userId));
+        // await updateUserData(userModel);
         return true;
       }
     } catch (e) {
@@ -112,55 +113,29 @@ class FirebaseFireStore extends GetxController {
     }
   }
 
-  // Future<bool> handleEmailSignUp(UserModel userModel) async {
-  //   try {
-  //     User? user;
-  //     UserModel? newUser;
-  //
-  //     user = userCredential.user;
-  //     newUser = await getUser(user!.uid);
-  //     if (newUser == null) {
-  //       return true;
-  //     } else {
-  //       return false;
-  //     }
-  //   } catch (e) {
-  //     log('$e Occurred');
-  //     Get.snackbar(
-  //       'Auth',
-  //       e.toString(),
-  //       borderRadius: 15,
-  //       icon: const Icon(Icons.person),
-  //       backgroundColor: Colors.white,
-  //       snackPosition: SnackPosition.BOTTOM,
-  //     );
-  //     return false;
-  //   }
-  // }
-
-  // handleForgotPassword(email) async {
-  //   try {
-  //     await auth.sendPasswordResetEmail(email: email).then((value) {
-  //       Get.snackbar(
-  //         'Auth',
-  //         'Email sent successfully',
-  //         borderRadius: 15,
-  //         icon: const Icon(Icons.email),
-  //         backgroundColor: Colors.white,
-  //         snackPosition: SnackPosition.BOTTOM,
-  //       );
-  //     });
-  //   } catch (e) {
-  //     Get.snackbar(
-  //       'Auth',
-  //       e.toString(),
-  //       borderRadius: 15,
-  //       icon: const Icon(Icons.person),
-  //       backgroundColor: Colors.white,
-  //       snackPosition: SnackPosition.BOTTOM,
-  //     );
-  //   }
-  // }
+  handleForgotPassword(email) async {
+    try {
+      await auth.sendPasswordResetEmail(email: email).then((value) {
+        Get.snackbar(
+          'Auth',
+          'Email sent successfully',
+          borderRadius: 15,
+          icon: const Icon(Icons.email),
+          backgroundColor: Colors.white,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+      });
+    } catch (e) {
+      Get.snackbar(
+        'Auth',
+        e.toString(),
+        borderRadius: 15,
+        icon: const Icon(Icons.person),
+        backgroundColor: Colors.white,
+        snackPosition: SnackPosition.BOTTOM,
+      );
+    }
+  }
 
   Future<void> updateUserData(UserModel user) async {
     await fireStore.collection("Users").doc(user.uid).update(user.toJson());

@@ -95,7 +95,7 @@ class ApiClient extends GetConnect implements GetxService {
     // if (res.body['success']) {
     //   ApiClient.to.token = data['token'];
     //   log(data.toString());
-      if(await FirebaseFireStore.to.handleEmailSignIn(email, password, data['user_id'])){
+      if(await FirebaseFireStore.to.handleEmailSignIn(email, password)){
         log('fbb');
         Get.offAllNamed(RoutePaths.homeScreen);
       }

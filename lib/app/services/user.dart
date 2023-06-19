@@ -21,7 +21,6 @@ class UserStore extends GetxController {
     uid: '',
     photoId: '',
     balance: 0,
-    user_id: 0,
     lastName: '',
     firstName: '',
     userRole: UserRole.individualRole,

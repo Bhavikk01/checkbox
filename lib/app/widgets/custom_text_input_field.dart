@@ -11,12 +11,13 @@ class CustomTextInputField extends StatelessWidget {
   final Color? fillColor;
   final Color? fontColor;
   final Color? labelFontColor;
+  final Widget? iconData;
   final FontWeight fontWeight;
   final FontWeight labelFontWeight;
   final bool obscureText;
   final Function(String)? onChange;
 
-  const CustomTextInputField({required this.hintText, this.onChange, this.controller, required this.fontWeight, required this.labelFontColor, required this.labelFontSize, required this.labelFontWeight, required this.label, this.fontColor, this.obscureText = false, required this.fillColor, required this.fontSize,Key? key}) : super(key: key);
+  const CustomTextInputField({this.iconData, required this.hintText, this.onChange, this.controller, required this.fontWeight, required this.labelFontColor, required this.labelFontSize, required this.labelFontWeight, required this.label, this.fontColor, this.obscureText = false, required this.fillColor, required this.fontSize,Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +46,7 @@ class CustomTextInputField extends StatelessWidget {
           fontWeight: labelFontWeight,
           color: labelFontColor,
         ),
-
+        suffixIcon: iconData,
         alignLabelWithHint: true,
         floatingLabelBehavior: FloatingLabelBehavior.always,
         enabledBorder: OutlineInputBorder(

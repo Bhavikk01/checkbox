@@ -84,17 +84,26 @@ class LoginScreen extends GetView<AuthController> {
                 color: Theme.of(context).colorScheme.secondary,
                 borderRadius: BorderRadius.circular(15.r),
               ),
-              child: CustomTextInputField(
-                fillColor: Theme.of(context).colorScheme.secondary,
-                controller: controller.passwordController,
-                obscureText: true,
-                fontSize: 14.sp,
-                fontWeight: FontWeight.w600,
-                label: '',
-                hintText: 'Enter your password',
-                labelFontColor: Colors.white54,
-                labelFontSize: 13.sp,
-                labelFontWeight: FontWeight.w600,
+              child: Obx(
+                () => CustomTextInputField(
+                  fillColor: Theme.of(context).colorScheme.secondary,
+                  controller: controller.passwordController,
+                  obscureText: !controller.isVisible.value ? true : false,
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.w600,
+                  label: '',
+                  iconData: IconButton(
+                      icon: !controller.isVisible.value? const Icon(Icons.visibility_off): const Icon(Icons.visibility),
+                      color: Colors.white,
+                      onPressed: () {
+                        controller.isVisible.value = !controller.isVisible.value;
+                      },
+                  ),
+                  hintText: 'Enter your password',
+                  labelFontColor: Colors.white54,
+                  labelFontSize: 13.sp,
+                  labelFontWeight: FontWeight.w600,
+                ),
               ),
             ),
             CircularButton(

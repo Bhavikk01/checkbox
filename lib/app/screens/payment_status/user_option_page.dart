@@ -61,7 +61,7 @@ class UserOptionPage extends GetView<UserOptionController> {
                       borderRadius: BorderRadius.circular(15.r),
                       border: Border.all(
                         color: controller.character.value == SingingCharacter.BUYER
-                                ? Theme.of(context).colorScheme.primary
+                                ? Colors.amber
                                 : Colors.white,
                       ),
                     ),
@@ -70,7 +70,7 @@ class UserOptionPage extends GetView<UserOptionController> {
                       children: [
                         Radio<SingingCharacter>(
                           fillColor: MaterialStateColor.resolveWith(
-                            (states) => Colors.black,
+                            (states) => Colors.amber,
                           ),
                           value: SingingCharacter.BUYER,
                           groupValue: controller.character.value,
@@ -110,7 +110,7 @@ class UserOptionPage extends GetView<UserOptionController> {
                       border: Border.all(
                         color:
                             controller.character.value == SingingCharacter.SELLER
-                                ? Theme.of(context).colorScheme.primary
+                                ? Colors.amber
                                 : Colors.white,
                       ),
                     ),
@@ -119,7 +119,7 @@ class UserOptionPage extends GetView<UserOptionController> {
                       children: [
                         Radio<SingingCharacter>(
                           fillColor: MaterialStateColor.resolveWith(
-                            (states) => Colors.black,
+                            (states) => Colors.amber,
                           ),
                           value: SingingCharacter.SELLER,
                           groupValue: controller.character.value,

@@ -186,6 +186,7 @@ class SendMoneyPage extends GetView<SendMoneyController> {
                         labelFontWeight: FontWeight.w700,
                         onChange: (value){
                           controller.countTotalAmount();
+                          controller.amountSend.value = controller.amount.text;
                         },
                       ),
                     ),
@@ -221,7 +222,7 @@ class SendMoneyPage extends GetView<SendMoneyController> {
                       textColor: Colors.black38,
                     ),
                     CustomTextField(
-                      text: '12.00 USD',
+                      text: '2.00 USD',
                       fontWeight: FontWeight.w600,
                       fontSize: 16.sp,
                       font: '',
@@ -242,12 +243,17 @@ class SendMoneyPage extends GetView<SendMoneyController> {
                       font: '',
                       textColor: Colors.black38,
                     ),
-                    CupertinoSwitch(
-                      value: false,
-                      activeColor: Colors.amber,
-                      thumbColor: Colors.white,
-                      trackColor: Colors.black26,
-                      onChanged: (val) {},
+                    Obx(
+                      () => CupertinoSwitch(
+                        value: controller.willPayFee.value,
+                        activeColor: Colors.amber,
+                        thumbColor: Colors.white,
+                        trackColor: Colors.black26,
+                        onChanged: (val) {
+                          controller.willPayFee.value = !controller.willPayFee.value;
+                          controller.countTotalAmount();
+                        },
+                      ),
                     ),
                   ],
                 ),
@@ -270,11 +276,11 @@ class SendMoneyPage extends GetView<SendMoneyController> {
                     ),
                     Obx(
                       () => CustomTextField(
-                        text: '${controller.totalAmount} USD',
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18.sp,
-                        font: '',
-                        textColor: Colors.black,
+                          text: '${controller.amountSend.value} USD',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18.sp,
+                          font: '',
+                          textColor: Colors.black,
                       ),
                     ),
                   ],
@@ -292,16 +298,28 @@ class SendMoneyPage extends GetView<SendMoneyController> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Expanded(
-                      child: CustomTextInputField(
-                        fillColor: Colors.white,
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w700,
-                        fontColor: Colors.black,
-                        label: 'Recipient gets',
-                        hintText: 'Amount',
-                        labelFontColor: Colors.black45,
-                        labelFontSize: 15.sp,
-                        labelFontWeight: FontWeight.w700,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomTextField(
+                            text: 'Recipient Amount',
+                            fontWeight: FontWeight.w600,
+                            fontSize: 11.sp,
+                            font: '',
+                            textColor: Colors.black45,
+                          ),
+                          SizedBox(height: 3.h),
+                          Obx(
+                            () => CustomTextField(
+                              text: controller.recipientPay.value,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 15.sp,
+                              font: '',
+                              textColor: Colors.black,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Container(
