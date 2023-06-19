@@ -81,7 +81,7 @@ class FirebaseFireStore extends GetxController {
     }
   }
 
-  Future<bool> handleEmailSignIn(email, password) async {
+  Future<bool> handleEmailSignIn(email, password, userId) async {
     try {
       User? user;
       UserModel? userModel;
@@ -90,13 +90,12 @@ class FirebaseFireStore extends GetxController {
         email: email,
         password: password,
       );
-
       user = userCredential.user;
       userModel = await getUser(user!.uid);
       if (userModel == null) {
         return false;
       } else {
-        await UserStore.to.saveProfile(user.uid);
+        await updateUserData(userModel.copyWith(user_id: userId));
         return true;
       }
     } catch (e) {
@@ -113,35 +112,31 @@ class FirebaseFireStore extends GetxController {
     }
   }
 
-  Future<bool> handleEmailSignUp(UserModel userModel) async {
-    try {
-      User? user;
-      UserModel? newUser;
-      UserCredential userCredential = await auth.createUserWithEmailAndPassword(
-          email: userModel.cashboxAccount.cashboxEmail,
-          password: userModel.cashboxAccount.cashboxPassword);
-      user = userCredential.user;
-      newUser = await getUser(user!.uid);
-      if (newUser == null) {
-        await addUser(userModel.copyWith(uid: user.uid));
-        await UserStore.to.saveProfile(user.uid);
-        return true;
-      } else {
-        return false;
-      }
-    } catch (e) {
-      log('$e Occurred');
-      Get.snackbar(
-        'Auth',
-        e.toString(),
-        borderRadius: 15,
-        icon: const Icon(Icons.person),
-        backgroundColor: Colors.white,
-        snackPosition: SnackPosition.BOTTOM,
-      );
-      return false;
-    }
-  }
+  // Future<bool> handleEmailSignUp(UserModel userModel) async {
+  //   try {
+  //     User? user;
+  //     UserModel? newUser;
+  //
+  //     user = userCredential.user;
+  //     newUser = await getUser(user!.uid);
+  //     if (newUser == null) {
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   } catch (e) {
+  //     log('$e Occurred');
+  //     Get.snackbar(
+  //       'Auth',
+  //       e.toString(),
+  //       borderRadius: 15,
+  //       icon: const Icon(Icons.person),
+  //       backgroundColor: Colors.white,
+  //       snackPosition: SnackPosition.BOTTOM,
+  //     );
+  //     return false;
+  //   }
+  // }
 
   // handleForgotPassword(email) async {
   //   try {

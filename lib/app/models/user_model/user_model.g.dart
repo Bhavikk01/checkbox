@@ -8,6 +8,7 @@ part of 'user_model.dart';
 
 _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       uid: json['uid'] as String,
+      user_id: json['user_id'] as int,
       balance: (json['balance'] as num).toDouble(),
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
@@ -28,6 +29,7 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
 Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
     <String, dynamic>{
       'uid': instance.uid,
+      'user_id': instance.user_id,
       'balance': instance.balance,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
@@ -35,7 +37,9 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'userRole': _$UserRoleEnumMap[instance.userRole]!,
       'socialSecurityNumber': instance.socialSecurityNumber,
       'dob': instance.dob,
-      'businessDetails': instance.businessDetails == null? null: instance.businessDetails!.toJson(),
+      'businessDetails': instance.businessDetails != null
+          ? instance.businessDetails!.toJson()
+          : null,
       'cashboxAccount': instance.cashboxAccount.toJson(),
       'userAddress': instance.userAddress.toJson(),
     };

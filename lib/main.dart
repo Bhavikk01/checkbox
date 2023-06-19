@@ -1,3 +1,4 @@
+import 'package:checkbox1/app/API/api_client.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
   Get.put<FirebaseFireStore>(FirebaseFireStore());
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
+  Get.put<ApiClient>(ApiClient());
   Get.lazyPut<ChatRoomController>(() => ChatRoomController());
   runApp(const MyApp());
 }
